@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="C5">
-      <HintPath>..\..\..\Visualizer\Lib\C5.dll</HintPath>
+      <HintPath>..\..\..\VizualAlgoGeom\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
     </Reference>
     <Reference Include="GeometricElements">
       <HintPath>..\..\..\Visualizer\GeometricElements.dll</HintPath>
@@ -70,6 +70,9 @@
       <Project>{9DE2D9EE-E024-4074-B928-55303247E4EC}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
