@@ -1,0 +1,11 @@
+﻿Input: Un set de puncte p_0,..., p_n
+Output: O curba care interpoleaza cu punctele date
+Idee de baza: 
+	Cautam un o functie polinomiala pe portiuni de forma:
+		S(i) = s1(x), pt x_1 < x < x_2, ...., sn(x) pt f x_n-1 < x < x_n
+		unde si(x)= a_i*(x - x_i)^3 + b_i*(x - x_i)^2 + c_i*(x-x_i) + d_i;
+	Adaugam conditiile:
+		fiecare functie polinomiala trebuie sa treaca prin capetele sale
+		derivatele de ordin doi trebuie sa fie egale
+	Rezolvam sistemul astfel format 
+				

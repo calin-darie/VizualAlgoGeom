@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStyles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConvexHull>
+    <Name>CH</Name>
+    <Color>
+      <Html>Red</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>LeftOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>true</ShouldShowPoints>
+  </ConvexHull>
+  <LowerConvexHull>
+    <Name>CH_jos</Name>
+    <Color>
+      <Html>BlueViolet</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>AbovePoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>true</ShouldShowPoints>
+  </LowerConvexHull>
+  <UpperConvexHull>
+    <Name>CH_sus</Name>
+    <Color>
+      <Html>Lime</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>LeftOfPoint</HorizontalPosition>
+      <VerticalPosition>AbovePoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>true</ShouldShowPoints>
+  </UpperConvexHull>
+</VisualStyles>

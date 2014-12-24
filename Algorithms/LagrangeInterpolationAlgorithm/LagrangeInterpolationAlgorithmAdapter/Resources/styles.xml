@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStyles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InterpolationPoints>
+    <Name />
+    <Color>
+      <Html>Black</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>true</ShouldShowPoints>
+  </InterpolationPoints>
+  <FinalCurve>
+    <Name />
+    <Color>
+      <Html>BlueViolet</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </FinalCurve>
+</VisualStyles>

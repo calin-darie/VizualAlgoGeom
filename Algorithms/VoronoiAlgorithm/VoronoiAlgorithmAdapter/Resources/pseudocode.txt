@@ -1,0 +1,39 @@
+while eventScheduler.anyEventIsAvailable
+	currentEvent <- eventScheduler.extarctEvent 
+	sweepLine.advanceTo(currentEvent)
+	handle (currentEvent)
+done
+
+handle (site event)
+	newSite <- siteEvent.Point
+	_frontLine.PinpointSite(newSite, out siteGeneratingArcBelow, out originalBreakpointLeft, out originalBreakpointRight);
+	if (originalBreakpointLeft is not null)
+		eventScheduler.TryDeleteCircleEventOf(originalBreakpointLeft) // false alarm
+	newEdge <- BisectorOf(newSite, siteGeneratingArcBelow)
+	edges.Add(newEdge)
+	newBreakpointLeft <- new BreakpointTracker(
+		newEdge, 
+		leftArcSite: siteGeneratingArcBelow,
+		rightArcSite: newSite,
+		going: Left)
+	AddBreakpoint(newBreakpointLeft)
+	var newBreakpointRight <- new BreakpointTracker(
+		newEdge,
+		leftArcSite: newSite, 
+		rightArcSite: siteGeneratingArcBelow, 
+		going: Right); 
+	AddBreakpoint(newBreakpointRight)
+	CheckCircleEvent(newSite, originalBreakpointLeft, newBreakpointLeft);
+	CheckCircleEvent(newSite, newBreakpointRight, originalBreakpointRight);
+	
+CheckCircleEvent(site, breakpointLeft, breakpointRight)
+	Point pointCircleEvent = BreakpointTracker.GetIntersectionPoint(breakpointLeft, breakpointRight);
+	if (pointLeftCircleEvent is null)
+		return
+	circle <- new Circle(center: pointCircleEvent, pointOnCircumference: site)
+	eventPoint <- new Point(pointCircleEvent.X, pointCircleEvent.Y + circle.Radius);
+	eventScheduler.AddCircleEvent(breakpointLeft, eventPoint, site, circle);
+
+handle ( circle event )
+
+error

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStyles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Diagram>
+    <Name />
+    <Color>
+      <Html>Blue</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </Diagram>
+  <FrontLine>
+    <Name />
+    <Color>
+      <Html>Black</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </FrontLine>
+  <SweepLine>
+    <Name>Sweep line</Name>
+    <Color>
+      <Html>DarkGreen</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </SweepLine>
+  <EdgeIntersection>
+    <Name />
+    <Color>
+      <Html>Black</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </EdgeIntersection>
+  <ScheduledEvent>
+    <Name />
+    <Color>
+      <Html>Orange</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </ScheduledEvent>
+  <AddedBreakpoint>
+    <Name>new breakpoint going {0}</Name>
+    <Color>
+      <Html>Orange</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </AddedBreakpoint>
+  <RemovedBreakpoint>
+    <Name />
+    <Color>
+      <Html>DarkRed</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </RemovedBreakpoint>
+  <LeftArcSite>
+    <Name>left</Name>
+    <Color>
+      <Html>Turquoise</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </LeftArcSite>
+  <RightArcSite>
+    <Name>right</Name>
+    <Color>
+      <Html>Magenta</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </RightArcSite>
+</VisualStyles>

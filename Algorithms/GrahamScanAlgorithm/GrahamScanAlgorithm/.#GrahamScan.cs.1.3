@@ -1,0 +1,158 @@
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using GeometricElements2;
+
+using InterfaceOfSnapshotsWithAlgorithmsAndVisualizer;
+
+namespace GrahamScanAlgorithm
+{
+    public class MyPointList : List<Point>
+    {
+    }
+
+    public class GrahamScan
+    {
+        private Point[] p;
+        private int n;
+        private ISnapshotRecorder Snapshot;
+
+        public GrahamScan(Point[] p, ISnapshotRecorder Snapshot)
+        {
+            this.p = p;
+            this.n = p.Length;
+            this.Snapshot = Snapshot;
+        }
+
+        public void sorting(ref Point[] p)
+        {
+            p = p.OrderBy(q => q.X).ThenBy(q => q.Y).ToArray();
+        }
+
+        /* Input:  three points P0, P1, and P2
+         * Return: >0 for P2 left of the line through P0 and P1
+         *         =0 for P2 on the line
+         *         <0 for P2 right of the line*/
+        public double isLeft(Point P0, Point P1, Point P2)
+        {
+            return (P1.X - P0.X) * (P2.Y - P0.Y) - (P2.X - P0.X) * (P1.Y - P0.Y);
+        }
+
+        public List<Point> Graham()
+        {
+            //List<Point>
+            MyPointList L_sus = new MyPointList();
+            List<Point> L_jos = new List<Point>();
+            List<Point> L = new List<Point>();
+
+            Snapshot.AddObject(L_jos, new VisualHints(
+                "lower_CH", 
+                System.Drawing.Color.Lime, 
+                new TextPosition(TextHorizontalPosition.LeftOfPoint, TextVerticalPosition.AbovePoint)));
+
+            Snapshot.AddObject(L_sus, new VisualHints (
+                "upper_CH", 
+                System.Drawing.Color.Lime, 
+                new TextPosition(TextHorizontalPosition.RightOfPoint, TextVerticalPosition.AbovePoint)));
+            
+            sorting(ref p);
+
+            if (n >= 1)
+            {
+                L_sus.Add(p[n - 1]);
+                Snapshot.TakeSnapshot(1);///XXX most likely, incorrect pseudocode line
+            }   
+
+            if (n >= 2)
+            {
+                L_sus.Add(p[n - 2]);
+                Snapshot.TakeSnapshot(1);///XXX most likely, incorrect pseudocode line
+            }
+
+            if (n >= 3)
+            {
+                int i = n - 3;
+                while (i >= 0)
+                {
+                    L_sus.Add(p[i]);
+                    Snapshot.TakeSnapshot(1);///XXX most likely, incorrect pseudocode line
+                    while (L_sus.Count > 2 && isLeft(L_sus.ElementAt(0), L_sus.ElementAt(1), L_sus.ElementAt(2)) > 0)
+                    {
+                        L_sus.RemoveAt(1);
+                        Snapshot.TakeSnapshot(1);//XXX most likely, incorrect pseudocode line
+                    }
+                    i--;
+                }
+            }
+
+            
+            if (n >= 1)
+            {
+                L_jos.Add(p[0]);
+                Snapshot.TakeSnapshot(1);///XXX most likely, incorrect pseudocode line
+            }
+
+            if (n >= 2)
+            {
+                L_sus.Add(p[n - 2]);
+                Snapshot.TakeSnapshot(1);///XXX most likely, incorrect pseudocode line
+            }
+
+            if (n >= 3)
+            {
+                int i = 2;
+                while (i < n)
+                {
+                    L_jos.Add(p[i]);
+                    Snapshot.TakeSnapshot(1);///XXX most likely, incorrect pseudocode line
+                    while (L_jos.Count > 2 && isLeft(L_jos.ElementAt(0), L_jos.ElementAt(1), L_jos.ElementAt(2)) > 0)
+                    {
+                        L_jos.RemoveAt(1);
+                        Snapshot.TakeSnapshot(1);///XXX most likely, incorrect pseudocode line
+                    }
+                    i++;
+                }
+            }
+
+
+            if (L_sus.Count > 0)
+                L_sus.RemoveAt(0);
+            
+            if (L_sus.Count > 0)
+                L_sus.RemoveAt(L_sus.Count - 1);
+            
+            
+            Snapshot.TakeSnapshot(1);///XXX most likely, incorrect pseudocode line
+            for (int i=0; i< L_sus.Count; i++)
+                L.Add(L_sus.ElementAt(i));
+            for (int i = 0; i < L_jos.Count; i++)
+                L.Add(L_jos.ElementAt(i));
+
+            /*Point A = null;
+            Point B = null;
+            bool addSeg = false;
+            List<LineSegment> hullSegments = new List<LineSegment>();
+            foreach (Point P in L)
+            {
+                A = B;
+                B = P;
+                if (addSeg)
+                    hullSegments.Add(new LineSegment(A, B));
+                addSeg = !addSeg;
+            }
+            Snapshot.AddObject(hullSegments, new VisualHints(
+                "CH", System.Drawing.Color.BlueViolet,
+                new TextPosition(
+                    TextHorizontalPosition.LeftOfPoint, TextVerticalPosition.BelowPoint)));*/
+            Snapshot.AddObject(new PolyLine(L), new VisualHints(
+                "CH", System.Drawing.Color.BlueViolet,
+                new TextPosition(
+                    TextHorizontalPosition.LeftOfPoint, 
+                    TextVerticalPosition.BelowPoint)));
+            Snapshot.TakeSnapshot(1);//XXX
+            return L;
+
+        }
+
+    }
+}

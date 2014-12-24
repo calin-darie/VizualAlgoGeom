@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointInConcavePolygonAlgorithm", "PointInConcavPolygonAlgorithm\PointInConcavePolygonAlgorithm.csproj", "{6FEC21DF-3E8D-4AFD-90AB-807F166D7101}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointInConcavePolygonAlgorithmAdapter", "PointInConcavPolygonAlgorithmAdapter\PointInConcavePolygonAlgorithmAdapter.csproj", "{C03C191E-1A12-4943-BBBC-8BFA0BDAAA9E}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = PointInConvexPolygonAlgorithm.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FEC21DF-3E8D-4AFD-90AB-807F166D7101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FEC21DF-3E8D-4AFD-90AB-807F166D7101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FEC21DF-3E8D-4AFD-90AB-807F166D7101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FEC21DF-3E8D-4AFD-90AB-807F166D7101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C03C191E-1A12-4943-BBBC-8BFA0BDAAA9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03C191E-1A12-4943-BBBC-8BFA0BDAAA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03C191E-1A12-4943-BBBC-8BFA0BDAAA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03C191E-1A12-4943-BBBC-8BFA0BDAAA9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

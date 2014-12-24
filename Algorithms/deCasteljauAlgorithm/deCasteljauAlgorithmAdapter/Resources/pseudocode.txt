@@ -1,0 +1,10 @@
+﻿punct deCasteljau(puncte b[n], float t, int n)
+	puncte c[n][r];
+	int i,r;
+	pentru i=0,n
+		c[i][0] = b[i];
+	pentru r=1,n
+		pentru i=1,n
+			daca (i <= j)
+				c[i][r] = (1-t) * c[i-1][r-1] + t * c[i][r-1];
+	return c[n][n];

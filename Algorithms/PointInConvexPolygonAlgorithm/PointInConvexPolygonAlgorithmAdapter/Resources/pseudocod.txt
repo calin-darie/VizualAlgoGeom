@@ -1,0 +1,11 @@
+Preprocesare
+	Găsim q centroidul a trei vârfuri necoliniare ale poligonului
+	Vârfurile poligonului sunt stocate în vectorul p şi ordonate după unghiul format cu punctul q.
+Căutare
+	Căutare binară în vectorul p.
+		Dacă (z,q,p_(i+1)) = întoarcere la dreapta şi (z,q,p_i) = întoarcere la stânga
+			z se află între razele determinate de p_i şi p_(i+1).
+	Dacă (p_i,p_(i+1),z) = întoarcere la stânga 
+		z este interior.
+	Altfel 
+		z este exterior.

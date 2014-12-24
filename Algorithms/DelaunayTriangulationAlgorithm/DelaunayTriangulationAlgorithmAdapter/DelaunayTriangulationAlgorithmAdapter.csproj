@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CF731BE8-799F-4CA5-AED1-5F6541035BA0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DelaunayTriangulationAlgorithmAdapter</RootNamespace>
+    <AssemblyName>DelaunayTriangulationAlgorithmAdapter</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Visualizer\Algorithms\DelaunayTriangulation\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AlgorithmResources">
+      <HintPath>..\..\..\Visualizer\AlgorithmResources.dll</HintPath>
+    </Reference>
+    <Reference Include="GeometricElements, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Visualizer\GeometricElements.dll</HintPath>
+    </Reference>
+    <Reference Include="InterfaceOfAlgorithmAdaptersWithVisualizer">
+      <HintPath>..\..\..\Visualizer\InterfaceOfAlgorithmAdaptersWithVisualizer.dll</HintPath>
+    </Reference>
+    <Reference Include="InterfaceOfSnapshotsWithAlgorithmsAndVisualizer">
+      <HintPath>..\..\..\Visualizer\InterfaceOfSnapshotsWithAlgorithmsAndVisualizer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EdgeConversions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DelaunayTriangulationAdapter.cs" />
+    <Compile Include="SnapshotDescriptions.cs" />
+    <Compile Include="VisualStyles.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\VizualAlgoGeom\Infrastructure\Infrastructure.csproj">
+      <Project>{9de2d9ee-e024-4074-b928-55303247e4ec}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DelaunayTriangulationAlgorithm\DelaunayTriangulationAlgorithm.csproj">
+      <Project>{969D3E16-AB24-4E41-B460-626469A8E458}</Project>
+      <Name>DelaunayTriangulationAlgorithm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\pseudocode.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\snapshotDescriptions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\styles.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

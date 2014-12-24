@@ -1,0 +1,9 @@
+L := 0;
+Pentru i:= 1,n
+	Dacă muchia i nu este orizontală
+		Dacă muchia i intersectează l la stânga lui z în orice punct mai puţin capătul de jos
+			L := L + 1; 
+Dacă L este impar
+	z este interior
+Altfel
+	z este exterior

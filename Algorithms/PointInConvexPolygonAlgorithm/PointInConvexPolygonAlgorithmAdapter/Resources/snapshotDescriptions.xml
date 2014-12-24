@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SnapshotDescriptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VerdictPointIsExterior>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Punctul se află în exteriorul poligonului dat.</Remark>
+  </VerdictPointIsExterior>
+  <VerdictPointIsInterior>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Punctul se află în interiorul poligonului dat.</Remark>
+  </VerdictPointIsInterior>
+  <SearchPointNotation>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Punctul căutat este notat în continuare cu x</Remark>
+  </SearchPointNotation>
+  <InteriorPointFound>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Am găsit punctul interior</Remark>
+  </InteriorPointFound>
+  <EdgeToCompareFound>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Am găsit latura cu care vom compara punctul căutat.</Remark>
+  </EdgeToCompareFound>
+  <SearchingInZone>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Construim semidrepte originate în punctul interior, care trec prin punctele poligonului. Parcugem semidreptele în sens trigonometric. Fiecare două semidrepte consecutive mărginesc zonă a planului.Căutăm punctul exterior în fiecare dintre zonele astfel formate.</Remark>
+  </SearchingInZone>
+</SnapshotDescriptions>

@@ -1,0 +1,36 @@
+GĂSEŞTE-INTERSECŢIILE(S)
+	Date de intrare: mulţmea S cu n segmente din plan.
+	Date de ieşire: mulţimea de puncte de intersecţie între segmentele din S, şi pentru fiecare punct lista de segmente care îl conţin.
+	Iniţializarea unei cozi vide Q.
+	Inserarea capetelor de segmente în Q (când un capăt superior al unui segment este inserat, segmentul corespunzător va trebui stocat cu el.
+	Iniţializarea unei structuri de stare T
+	Cât timp Q e nevidă
+		Determină următorul punct-eveniment p în Q şi şterge-l
+		TRATEAZĂ-PUNCTUL-EVENIMENT(p)
+
+TRATEAZĂ-PUNCTUL-EVENIMENT(p)
+	Fie U(p) mulţimea de segmente care au capătul superior în p; aceste segmente au fost stocate împreună cu punctul-eveniment p; (Pentru segmentele orizontale capătul superior este prin definiţie capătul din stânga)
+	Găseşte toate segmentele stocate în T care îl conţin pe p; (aceste segmente sunt adiacente în T )
+	Fie L(p) submulţimea de segmente găsite care au punctul p capătul inferior
+	Fie C(p) submulţimea de segmente găsite care conţin punctul p în interior.
+	Dacă L(p) U U(p) U C(p) conţine mai mult de un segment
+		p este intersecţie, iar L(p) U U(p) U C(p) este mulţimea de segmente care se intersectează în p.
+	Şterge segmentele din L(p) din T U C(p) din T .
+	Inserează segmentele din U(p) U C(p) în T .
+	Ordinea acestor segmente în T trebuie să corespundă ordinii în care ele sunt intersectate de linia de baleiere imediat sub p.
+	Dacă există un segment orizontal, el va apărea ultimul printre segmentele care îl conţin pe p.
+	(* Ştergerea şi reinserarea segmentelor din C(p) le inversează ordinea. *)
+	Dacă U(p) U C(p) = 0;
+		Fie sl şi sr vecinii lui p (din stânga şi din dreapta) în T
+		EVENIMENT-NOU(sl; sr; p)
+	Altfel
+		Fie s' cel mai din stânga segment din U(p) U C(p) în T
+		Fie sl vecinul din stânga al lui s' în T .
+		EVENIMENT-NOU(sl; s0; p)
+		Fie s" cel mai din dreapta segment din U(p) U C(p) în T
+		Fie sr cel mai din dreapta vecin al lui s" în T
+		EVENIMENT-NOU(s"; sr; p)
+		
+EVENIMENT-NOU(sl; sr; p)
+	Dacă sl şi sr se intersectează sub linia de baleiere sau pe ea, dar la dreapta punctului-eveniment p şi intersecţia nu se află ca eveniment în Q
+		Inserează punctul de intersecţie ca punct-eveniment în Q.

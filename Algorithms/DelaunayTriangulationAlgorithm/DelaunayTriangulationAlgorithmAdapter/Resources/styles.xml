@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<VisualStyles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TestLegalEdge>
+    <Name />
+    <Color>
+      <Html>Pink</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </TestLegalEdge>
+  <IllegalEdge>
+    <Name>illegal edge</Name>
+    <Color>
+      <Html>Gray</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </IllegalEdge>
+  <AddedItem>
+    <Name />
+    <Color>
+      <Html>LightGreen</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </AddedItem>
+  <RemovedTriangle>
+    <Name />
+    <Color>
+      <Html>Red</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </RemovedTriangle>
+  <SupportingTriangles>
+    <Name />
+    <Color>
+      <Html>Orange</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </SupportingTriangles>
+  <Diagram>
+    <Name />
+    <Color>
+      <Html>Blue</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>RightOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>false</ShouldShowPoints>
+  </Diagram>
+</VisualStyles>

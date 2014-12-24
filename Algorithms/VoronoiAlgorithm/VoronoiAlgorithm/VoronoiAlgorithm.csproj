@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E0B5813C-7041-4EDD-9F87-F08FF237B59A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VoronoiAlgorithm</RootNamespace>
+    <AssemblyName>VoronoiAlgorithm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Visualizer\Algorithms\Voronoi\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C5">
+      <HintPath>..\..\..\Visualizer\Lib\C5.dll</HintPath>
+    </Reference>
+    <Reference Include="GeometricElements">
+      <HintPath>..\..\..\Visualizer\GeometricElements.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Arc.cs" />
+    <Compile Include="BreakpointTracker.cs" />
+    <Compile Include="FrontLinePointComparer.cs" />
+    <Compile Include="CircleEvent.cs" />
+    <Compile Include="FrontLine.cs" />
+    <Compile Include="Edge.cs" />
+    <Compile Include="HalfEdge.cs" />
+    <Compile Include="IEdge.cs" />
+    <Compile Include="IEdgeList.cs" />
+    <Compile Include="IFrontLine.cs" />
+    <Compile Include="IEvent.cs" />
+    <Compile Include="EventComparer.cs" />
+    <Compile Include="IBreakpointTracker.cs" />
+    <Compile Include="IHasPoint.cs" />
+    <Compile Include="ISweepLine.cs" />
+    <Compile Include="IVoronoiAlgorithm.cs" />
+    <Compile Include="IVoronoiEventScheduler.cs" />
+    <Compile Include="SiteEvent.cs" />
+    <Compile Include="SweepLine.cs" />
+    <Compile Include="VoronoiAlgorithm.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VoronoiEventScheduler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\VizualAlgoGeom\Infrastructure\Infrastructure.csproj">
+      <Project>{9DE2D9EE-E024-4074-B928-55303247E4EC}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

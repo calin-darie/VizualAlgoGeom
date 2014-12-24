@@ -1,0 +1,1 @@
+﻿Daca derivatele de gradul doi sunt nule, atunci se spune ca am folosit curbe spline naturale.

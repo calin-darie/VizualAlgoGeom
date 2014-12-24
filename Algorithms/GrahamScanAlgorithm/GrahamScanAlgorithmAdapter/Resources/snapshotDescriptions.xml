@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SnapshotDescriptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UpperHullPointRemoved>
+    <PseudocodeLine>8</PseudocodeLine>
+    <Remark>Am găsit o întoarcere la dreapta şi am şters punctul din mijloc.</Remark>
+  </UpperHullPointRemoved>
+  <LowerHullPointRemoved>
+    <PseudocodeLine>15</PseudocodeLine>
+    <Remark>Am găsit o întoarcere la dreapta şi am şters punctul din mijloc.</Remark>
+  </LowerHullPointRemoved>
+  <UpperHullPointAdded>
+    <PseudocodeLine>6</PseudocodeLine>
+    <Remark>Adăugăm următorul punct în acoperirea convexă superioară.</Remark>
+  </UpperHullPointAdded>
+  <LowerHullPointAdded>
+    <PseudocodeLine>13</PseudocodeLine>
+    <Remark>Adăugăm următorul punct în acoperirea convexă inferioară.</Remark>
+  </LowerHullPointAdded>
+  <ConcatenateHulls>
+    <PseudocodeLine>18</PseudocodeLine>
+    <Remark>Formăm acoperirea convexă prin concatenarea acoperirii convexe superioare cu cea inferioară. Am eliminat în prealabil primul şi ultimul element din acoperirea convexă superioară. Era acelaşi lucru dacă eliminam primul şi ultimul punct din cea inferioară.</Remark>
+  </ConcatenateHulls>
+  <UpperHullFirstPointAdded>
+    <PseudocodeLine>3</PseudocodeLine>
+    <Remark>Inserăm primul punct în acoperirea convexă superioară (primul punct din sortarea lexicografică)</Remark>
+  </UpperHullFirstPointAdded>
+  <UpperHullSecondPointAdded>
+    <PseudocodeLine>3</PseudocodeLine>
+    <Remark>Inserăm al doilea punct în acoperirea convexă superioară (al doilea punct din sortarea lexicografică)</Remark>
+  </UpperHullSecondPointAdded>
+  <LowerHullFirstPointAdded>
+    <PseudocodeLine>10</PseudocodeLine>
+    <Remark>Inserăm primul punct din acoperirea convexă inferioară (ultimul punct din sortarea lexicografică).</Remark>
+  </LowerHullFirstPointAdded>
+  <LowerHullSecondPointAdded>
+    <PseudocodeLine>10</PseudocodeLine>
+    <Remark>Inserăm al doilea punct din acoperirea convexă inferioară (penultimul punct din sortarea lexicografică).</Remark>
+  </LowerHullSecondPointAdded>
+</SnapshotDescriptions>

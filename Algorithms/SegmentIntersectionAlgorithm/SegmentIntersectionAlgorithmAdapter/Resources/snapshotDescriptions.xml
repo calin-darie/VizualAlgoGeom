@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SnapshotDescriptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SweepLineInitialized>
+    <PseudocodeLine>4</PseudocodeLine>
+    <Remark>Iniţializarea liniei de baleiere.</Remark>
+  </SweepLineInitialized>
+  <ExtractingEventPointFromQueue>
+    <PseudocodeLine>8</PseudocodeLine>
+    <Remark>Extragem din coadă următorul punct-eveniment.</Remark>
+  </ExtractingEventPointFromQueue>
+  <SweepLineUpdated>
+    <PseudocodeLine>8</PseudocodeLine>
+    <Remark>Linia de baleiere a coborât pe punctul-eveniment găsit.</Remark>
+  </SweepLineUpdated>
+  <IntersectionsFound>
+    <PseudocodeLine>10</PseudocodeLine>
+    <Remark>Au fost găsite intersecţiile segmentelor.</Remark>
+  </IntersectionsFound>
+  <RemovingSegmentsHavingEventPointAsLowerEndFromLineStatus>
+    <PseudocodeLine>18</PseudocodeLine>
+    <Remark>Eliminăm din structura de stare a liniei de baleiere segmentele ce au punctul-eveniment capăt inferior.</Remark>
+  </RemovingSegmentsHavingEventPointAsLowerEndFromLineStatus>
+  <RemovingSegmentsContainingEventPointFromLineStatus>
+    <PseudocodeLine>18</PseudocodeLine>
+    <Remark>Eliminăm din structura de stare a liniei de baleiere segmentele ce au punctul-eveniment în interior.</Remark>
+  </RemovingSegmentsContainingEventPointFromLineStatus>
+  <IntersectionPointFound>
+    <PseudocodeLine>17</PseudocodeLine>
+    <Remark>Am găsit un punct de intersecţii. O dată cu el vom stoca toate segmentele ce se intersectează în el.</Remark>
+  </IntersectionPointFound>
+  <RestoringSegmentsContainingEventPoint>
+    <PseudocodeLine>19</PseudocodeLine>
+    <Remark>Inserăm în structura de stare a liniei de baleiere segmentele care conţin punctul-eveniment în interior sau îl au capăt superior. Segmentelor care au punctul-eveniment în interior li se va schimba ordinea în structura de stare. Din acest motiv ele au fost eliminate mai devreme şi apoi inserate la loc.</Remark>
+  </RestoringSegmentsContainingEventPoint>
+  <NewEventFound>
+    <PseudocodeLine>36</PseudocodeLine>
+    <Remark>Am găsit un nou punct-eveniment.</Remark>
+  </NewEventFound>
+  <TestingSegmentIntersection>
+    <PseudocodeLine>35</PseudocodeLine>
+    <Remark>Vom testa dacă segmentele se intersectează. Dacă da, acel punct va fi un nou punct-eveniment.</Remark>
+  </TestingSegmentIntersection>
+</SnapshotDescriptions>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SnapshotDescriptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TestingEdge>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Latura curentă va fi testată dacă se intersectează cu linia orizontală ce trece prin x.</Remark>
+  </TestingEdge>
+  <IntersectionFound>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Am găsit o intersecţie cu o latură a poligonului.</Remark>
+  </IntersectionFound>
+  <SearchPointNotation>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Punctul căutat este notat în continuare cu x</Remark>
+  </SearchPointNotation>
+  <VerdictPointIsInterior>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Punctul se află în interiorul poligonului dat.</Remark>
+  </VerdictPointIsInterior>
+  <VerdictPointIsExterior>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Punctul se află în exteriorul poligonului dat.</Remark>
+  </VerdictPointIsExterior>
+  <IntroducingSearchLine>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>Am trasat linia orizontală ce trece prin punctul căutat.</Remark>
+  </IntroducingSearchLine>
+</SnapshotDescriptions>

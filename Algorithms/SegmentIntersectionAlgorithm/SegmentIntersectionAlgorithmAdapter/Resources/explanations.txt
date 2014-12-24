@@ -1,0 +1,3 @@
+Algoritmul foloseşte tehnica liniei de baleiere. Conţine o coadă de evenimente ce permite şi inserarea pe o poziţie dată. De asemenea există o structură ce reţine starea curentă a liniei de baleiere, adică segmentele intersectate de ea, ordonate de la stânga la dreapta. La fiecare pas este extras din coadă un eveniment şi este analizat. 
+Algoritmul are complexitatea timp O(nlogn + Ilogn), unde I este numărul de puncte de intersecţie a segmentelor din S, ceea ce îl face să fie un algoritm dependent de datele de ieşire. 
+Complexitatea spaţiu poate fi, după o optimizare, liniară.

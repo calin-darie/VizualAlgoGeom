@@ -1,0 +1,3 @@
+Algoritmul foloseşte o linie orizontală ce trece prin punctul căutat şi numără intersecţiile cu laturile poligonului la stânga punctului. Dacă numărul de intersecţii este impar, atunci punctul este interior, altfel e exterior. 
+Cazurile degenerate cum ar fi suprapunerea cu o latură orizontală sau cu un vârf al poligonului se rezolvă ignorând laturile orizontale şi intersecţiile cu capetele inferioare ale laturilor.
+Algoritmul are complexitatea O(n).

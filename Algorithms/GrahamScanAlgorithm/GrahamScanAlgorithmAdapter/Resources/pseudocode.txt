@@ -1,0 +1,18 @@
+﻿Sortează punctele lexicografic
+Se obține lista P = (p1; ::pn)
+L_sus = (p_1; p_2)
+i = 3
+Cât timp i <= n do
+	Adaugă pi la L_sus
+	Cât timp (L_sus are mai mult de 2 elemente și primele 3 elemente nu formează o intoarcere la stânga)
+		Șterge al doilea element din lista L_sus
+	i = i + 1
+L_jos = (p_n; p_n-1)
+i = n - 2
+Cât timp i > 0 do
+	Adaugă p_i la L_jos
+	Cât timp (L_jos are mai mult de 2 elemente și primele 3 elemente nu formează o intoarcere la stânga)
+		Șterge al doilea element din lista L_jos
+	i = i - 1
+Șterge primul și ultimul punct din L_sus //(se evită dublurile cand cele două jumătăți se întâlnesc)
+L = Lsus concatenată cu Ljos

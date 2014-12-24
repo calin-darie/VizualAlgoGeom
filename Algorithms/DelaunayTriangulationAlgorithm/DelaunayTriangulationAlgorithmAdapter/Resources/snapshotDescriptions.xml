@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<SnapshotDescriptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Done>
+    <PseudocodeLine>21</PseudocodeLine>
+  </Done>
+  <Error>
+    <PseudocodeLine>31</PseudocodeLine>
+    <Remark>Error: {0}</Remark>
+  </Error>
+  <TestingLegalEdgeCircle>
+    <PseudocodeLine>25</PseudocodeLine>
+  </TestingLegalEdgeCircle>
+  <TriangleRemoved>
+    <PseudocodeLine>7</PseudocodeLine>
+  </TriangleRemoved>
+  <TriangleAdded>
+    <PseudocodeLine>7</PseudocodeLine>
+  </TriangleAdded>
+  <PointInserted>
+    <PseudocodeLine>7</PseudocodeLine>
+    <Remark>Inserting point at {0}</Remark>
+  </PointInserted>
+  <FlippingEdge>
+    <PseudocodeLine>26</PseudocodeLine>
+  </FlippingEdge>
+</SnapshotDescriptions>

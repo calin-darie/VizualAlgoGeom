@@ -1,0 +1,6 @@
+Algoritmul prezentat îmbunătăţeşte timpul de căutare pentru un punct într-un poligon convex făcând o preprocesare. Este util atunci când avem de căutat mai multe puncte în acelaşi poligon dat. 
+Se bazează pe proprietatea poligoanelor convexe că vârfurile apar ordonate unghiular după orice punct intern.
+Găsim un astfel de punct căutând trei vârfuri necoliniare şi aflâdu-le centru de greutate. 
+Ordonăm vârfurile unghiular după punctul găsit într-o structură care să permită căutarea binară, cum ar fi un vector.
+Pentru a stabili dacă (p1,p2,p3) reprezintă o întoarcere la stânga sau la dreapta calculăm un determinant format cu coordonatele punctelor. Acesta reprezintă de două ori aria cu semn a triunghiului (p1,p2,p3), cu semnul + dacă şi numai dacă (p1,p2,p3) reprezintă o întoarcere la dreapta.
+Algoritmul necesită O(n) timp de preprocesare, O(n) spaţiu de stocare, iar un punct este găsit în timp O(logn).

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SnapshotDescriptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Done>
+    <PseudocodeLine>5</PseudocodeLine>
+  </Done>
+  <HandleSite>
+    <PseudocodeLine>7</PseudocodeLine>
+    <Remark>site event </Remark>
+  </HandleSite>
+  <EdgeAdded>
+    <PseudocodeLine>12</PseudocodeLine>
+  </EdgeAdded>
+  <CircleScheduled>
+    <PseudocodeLine>35</PseudocodeLine>
+  </CircleScheduled>
+  <HandleCircle>
+    <PseudocodeLine>37</PseudocodeLine>
+    <Remark>circle event {0}</Remark>
+  </HandleCircle>
+  <Error>
+    <PseudocodeLine>39</PseudocodeLine>
+    <Remark>Error: {0}</Remark>
+  </Error>
+  <RemovedBreakpoint>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>breakpoint to remove, which was {0}: {1}</Remark>
+  </RemovedBreakpoint>
+  <AddedBreakpoint>
+    <PseudocodeLine>0</PseudocodeLine>
+    <Remark>{0} at {1}</Remark>
+  </AddedBreakpoint>
+</SnapshotDescriptions>

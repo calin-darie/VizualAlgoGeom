@@ -1,0 +1,31 @@
+﻿Algorithm DelaunayTriangulation(PlanarPointSet P) : A Delaunay triangulation of P.
+	Let p0 be the lexicographically highest point of P, that is, the rightmost among the points with largest y-coordinate.
+	Let p−1 and p−2 be two points in RXR sufficiently far away and such that P is contained in 	the triangle p0 p−1 p−2.
+	Initialize T as the triangulation consisting of the single triangle p0 p−1 p−2.
+	Compute a random permutation p1, p2,..., pn of P\ {p0}.
+	for r ← 1 to n
+		do (∗ Insert pr into T: ∗)
+			Find a triangle pi pj pk ∈ T containing pr
+			if pr lies in the interior of the triangle pi pj pk
+				Add edges from pr to the three vertices of pipj pk, thereby splitting pi pj pk into three triangles.
+				LegalizeEdge(pr, pi pj, T)
+				LegalizeEdge(pr, pj pk, T)
+				LegalizeEdge(pr, pk pi, T)
+			else (∗ pr lies on an edge of pipj pk, say the edge pipj ∗)
+				Add edges from pr to pk and to the third vertex pl of the other triangle that is incident to pipj, thereby splitting the two triangles incident to pipj into four triangles.
+				LegalizeEdge(pr, pi pl, T)
+				LegalizeEdge(pr, pl pj, T)
+				LegalizeEdge(pr, pj pk, T)
+				LegalizeEdge(pr, pk pi, T)
+	Discard p−1 and p−2 with all their incident edges from T.
+	return T
+
+LegalizeEdge (pr, edgePoint1, edgePoint2, triangulation)
+	let edgePoint1 edgePoint2 pk be the triangle adjacent to the input triangle along the edge 
+	if pr lies in the circle through edgePoint1, edgePoint2, pk (* if edge is illegal *)
+	(∗ Flip pi pj ∗)
+		Replace pi pj with pr pk
+		LegalizeEdge(pr, pi pk, T)
+		LegalizeEdge(pr, pk pj ,T)
+
+error

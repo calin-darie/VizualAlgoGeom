@@ -1,0 +1,6 @@
+﻿Input n , i , x ;
+Initialize y = [ 0 , 0 , . . . , 1 ] ( n−dimensional vector ) ;
+for k=1,n do
+	if ( k not equal to i ) do
+		y = ( shift y to left by one ) − x( k ) ∗y ;
+Return y ;
