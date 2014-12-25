@@ -35,6 +35,9 @@
     <Reference Include="AlgorithmResources">
       <HintPath>..\..\..\Visualizer\AlgorithmResources.dll</HintPath>
     </Reference>
+    <Reference Include="Infrastructure">
+      <HintPath>..\..\..\Visualizer\Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="GeometricElements, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Visualizer\GeometricElements.dll</HintPath>
@@ -56,10 +59,6 @@
     <Compile Include="VisualStyles.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\VizualAlgoGeom\Infrastructure\Infrastructure.csproj">
-      <Project>{9de2d9ee-e024-4074-b928-55303247e4ec}</Project>
-      <Name>Infrastructure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DelaunayTriangulationAlgorithm\DelaunayTriangulationAlgorithm.csproj">
       <Project>{969D3E16-AB24-4E41-B460-626469A8E458}</Project>
       <Name>DelaunayTriangulationAlgorithm</Name>

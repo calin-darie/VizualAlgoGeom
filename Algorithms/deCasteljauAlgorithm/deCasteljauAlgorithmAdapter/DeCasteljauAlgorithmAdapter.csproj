@@ -41,6 +41,9 @@
     <Reference Include="AlgorithmResources">
       <HintPath>..\..\..\Visualizer\AlgorithmResources.dll</HintPath>
     </Reference>
+    <Reference Include="Infrastructure">
+      <HintPath>..\..\..\Visualizer\Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="GeometricElements, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Visualizer\GeometricElements.dll</HintPath>
@@ -74,10 +77,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\VizualAlgoGeom\Infrastructure\Infrastructure.csproj">
-      <Project>{9de2d9ee-e024-4074-b928-55303247e4ec}</Project>
-      <Name>Infrastructure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\deCasteljauAlgorithm\deCasteljauAlgorithm.csproj">
       <Project>{7265EA71-0871-4299-A164-55CB14A623E1}</Project>
       <Name>deCasteljauAlgorithm</Name>

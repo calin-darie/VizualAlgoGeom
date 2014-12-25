@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AlgorithmResources">
+      <HintPath>..\..\..\Visualizer\AlgorithmResources.dll</HintPath>
+    </Reference>
+    <Reference Include="Infrastructure">
+      <HintPath>..\..\..\Visualizer\Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="GeometricElements, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Visualizer\GeometricElements.dll</HintPath>
@@ -54,14 +60,6 @@
     <Compile Include="VisualStyles.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\VizualAlgoGeom\DefaultAuxiliariesImplementation\AlgorithmResources.csproj">
-      <Project>{45B8B277-864A-4493-ACFB-C0DFF20DC89D}</Project>
-      <Name>AlgorithmResources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\VizualAlgoGeom\Infrastructure\Infrastructure.csproj">
-      <Project>{9de2d9ee-e024-4074-b928-55303247e4ec}</Project>
-      <Name>Infrastructure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GrahamScanAlgorithm\GrahamScanAlgorithm.csproj">
       <Project>{8D14CF1D-6DC0-4A0C-B1BF-B4CBB5374AB3}</Project>
       <Name>GrahamScanAlgorithm</Name>
