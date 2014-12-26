@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStyles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PartialOutput>
+    <Name>P</Name>
+    <Color>
+      <Html>Red</Html>
+    </Color>
+    <TextPosition>
+      <HorizontalPosition>LeftOfPoint</HorizontalPosition>
+      <VerticalPosition>BelowPoint</VerticalPosition>
+    </TextPosition>
+    <ShouldShowPoints>true</ShouldShowPoints>
+  </PartialOutput>
+</VisualStyles>

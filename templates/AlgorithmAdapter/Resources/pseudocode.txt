@@ -1,0 +1,6 @@
+﻿function
+	function line 1
+	function line 2
+	while condition
+		while line 1
+		while line 2

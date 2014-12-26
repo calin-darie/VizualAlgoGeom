@@ -1,0 +1,32 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>AlgorithmAdapter</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>AlgorithmName</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="$safeprojectname$AlgorithmAdapter.csproj" File="AlgorithmAdapter.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$Adapter.cs">Adapter.cs</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Resources" TargetFolderName="Resources">
+        <ProjectItem ReplaceParameters="true" TargetFileName="pseudocode.txt">pseudocode.txt</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="explanations.txt">explanations.txt</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="snapshotDescriptions.xml">snapshotDescriptions.xml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="styles.xml">styles.xml</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="SnapshotDescriptions.cs">SnapshotDescriptions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="VisualStyles.cs">VisualStyles.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

@@ -1,0 +1,2 @@
+﻿A static description of the workings of the algorithm.
+This is a good place to state high level goals and principles behind the algorithm.
