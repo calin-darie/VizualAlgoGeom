@@ -27,6 +27,6 @@
   </RemovedBreakpoint>
   <AddedBreakpoint>
     <PseudocodeLine>0</PseudocodeLine>
-    <Remark>{0} at {1}</Remark>
+    <Remark>breakpoint added at {0}</Remark>
   </AddedBreakpoint>
 </SnapshotDescriptions>
