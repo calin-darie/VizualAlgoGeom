@@ -236,7 +236,7 @@ namespace VizualAlgoGeom
     internal void SetRemark(string p)
     {
       _remarksControl.TextBoxRemark.Text = p;
-      _remarksControl.ThreadSafeInvalidate();
+      _remarksControl.UiThreadInvalidate();
     }
 
     internal void PopulateControls(List<IPseudocodeLine> pseudocodeLines, string explanation)

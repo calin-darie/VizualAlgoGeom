@@ -109,7 +109,7 @@ namespace VizualAlgoGeom
 
     internal void InvalidateCanvas()
     {
-      Canvas.ThreadSafeInvalidate();
+      Canvas.UiThreadInvalidate();
     }
 
     void SetBoundsWorldUnits(double newLeft, double newRight, double newBottom, double newTop)

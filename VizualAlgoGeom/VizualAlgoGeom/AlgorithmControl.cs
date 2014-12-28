@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using InterfaceOfAlgorithmAdaptersWithVisualizer;
+using VizualAlgoGeom.ThreadSafeComponentHandling;
 
 namespace VizualAlgoGeom
 {
@@ -30,36 +31,27 @@ namespace VizualAlgoGeom
 
     internal void ArrangeInTreeView(List<IPseudocodeLine> list)
     {
-      if (InvokeRequired)
-      {
-        Invoke(new Action(()=> ArrangeInTreeView(list)));
-        return;
-      }
-      foreach (IPseudocodeLine element in list)
-        ArrangeInTreeForm(element.Depth, element.Text);
-      treeViewPseudocode.ExpandAll();
+      this.UiThreadExecute(
+        () =>
+        {
+          foreach (IPseudocodeLine element in list)
+            ArrangeInTreeForm(element.Depth, element.Text);
+          treeViewPseudocode.ExpandAll();
+        });
     }
 
     internal void EmptyTreeView()
     {
-      if (InvokeRequired)
-      {
-        Invoke(new Action(EmptyTreeView));
-        return;
-      }
-      treeViewPseudocode.Nodes.Clear();
+      this.UiThreadExecute(treeViewPseudocode.Nodes.Clear);
     }
 
     internal void SelectLine(int lineNumber)
     {
-      if (InvokeRequired)
-      {
-        Invoke(new Action(() => SelectLine(lineNumber)));
-        return;
-      }
-      
-      treeViewPseudocode.SelectedNode = FindTreeNodeAt(lineNumber);
-      treeViewPseudocode.Focus();
+      this.UiThreadExecute(() =>
+        {
+          treeViewPseudocode.SelectedNode = FindTreeNodeAt(lineNumber);
+          treeViewPseudocode.Focus();
+        });
     }
 
     TreeNode FindTreeNodeAt(int lineNumber)

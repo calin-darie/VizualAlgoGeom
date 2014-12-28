@@ -109,7 +109,7 @@ namespace VizualAlgoGeom
 
     void UpdatePlayerStatus()
     {
-      this.ThreadSafeMethodCalls(
+      this.UiThreadExecute(
         () =>
         {
           toolStripStatusLabel.Text = _snapshotPlayer.StatusString;

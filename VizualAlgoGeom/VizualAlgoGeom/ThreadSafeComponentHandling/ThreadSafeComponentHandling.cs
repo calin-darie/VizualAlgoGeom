@@ -4,7 +4,7 @@ namespace VizualAlgoGeom.ThreadSafeComponentHandling
 {
   internal static class ThreadSafeComponentHandler
   {
-    internal static void ThreadSafeInvalidate(this Control target)
+    internal static void UiThreadInvalidate(this Control target)
     {
       if (target.InvokeRequired)
       {
@@ -18,7 +18,7 @@ namespace VizualAlgoGeom.ThreadSafeComponentHandling
       }
     }
 
-    internal static void ThreadSafeMethodCalls(this Control target, Calls calls)
+    internal static void UiThreadExecute(this Control target, Calls calls)
     {
       if (target.InvokeRequired)
       {
