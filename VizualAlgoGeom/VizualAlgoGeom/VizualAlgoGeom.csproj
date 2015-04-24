@@ -102,6 +102,7 @@
     <Compile Include="DataStructuresControl.Designer.cs">
       <DependentUpon>DataStructuresControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DcelFactory.cs" />
     <Compile Include="DockableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +111,11 @@
     </Compile>
     <Compile Include="DTO\AlgorithmInput.cs" />
     <Compile Include="EnableControlsEventArgs.cs" />
+    <Compile Include="ExceptionResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ExplanationsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -199,6 +205,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExceptionResources.resx">
       <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ExplanationsControl.resx">
       <DependentUpon>ExplanationsControl.cs</DependentUpon>

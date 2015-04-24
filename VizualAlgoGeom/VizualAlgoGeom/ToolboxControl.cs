@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Services;
 using System.Windows.Forms;
 using ToolboxGeometricElements;
 
@@ -28,6 +29,7 @@ namespace VizualAlgoGeom
     internal LineFactory LineFactory { get; set; }
     internal PolylineFactory PolylineFactory { get; set; }
     internal ClosedPolylineFactory ClosedPolylineFactory { get; set; }
+    internal DcelFactory DcelFactory { get; set; }
 
     internal Button BtCenter
     {
@@ -45,9 +47,10 @@ namespace VizualAlgoGeom
       RayFactory = new RayFactory();
       LineFactory = new LineFactory();
       WeightedPointFactory = new WeightedPointFactory();
-
+      DcelFactory = new DcelFactory();
       AddFactoriesEnableControlsEventHandlers();
     }
+    
 
     void AddFactoriesEnableControlsEventHandlers()
     {
@@ -58,6 +61,7 @@ namespace VizualAlgoGeom
       LineFactory.EnableControls += EnableAllButtons;
       RayFactory.EnableControls += EnableAllButtons;
       WeightedPointFactory.EnableControls += EnableAllButtons;
+      DcelFactory.EnableControls += EnableAllButtons;
     }
 
     void btPoint_Click(object sender, EventArgs e)
@@ -94,6 +98,10 @@ namespace VizualAlgoGeom
     {
       ToolChanged(sender, new ToolChangedEventArgs(LineFactory));
     }
+    private void btDcel_Click(object sender, EventArgs e)
+    {
+      ToolChanged(sender, new ToolChangedEventArgs(DcelFactory));
+    }
 
     void EnableAllButtons(object sender, EnableControlsEventArgs e)
     {
@@ -104,6 +112,8 @@ namespace VizualAlgoGeom
       btRay.Enabled = enable;
       btLineStrip.Enabled = enable;
       btLineLoop.Enabled = enable;
+      btWeightedPoint.Enabled = enable;
+      btDcel.Enabled = enable;
     }
 
     public void SetCurrentGroupForFactories(Group group)
@@ -115,6 +125,9 @@ namespace VizualAlgoGeom
       PolylineFactory.Group = group;
       RayFactory.Group = group;
       WeightedPointFactory.Group = group;
+      DcelFactory.Group = group;
     }
+
+ 
   }
 }
