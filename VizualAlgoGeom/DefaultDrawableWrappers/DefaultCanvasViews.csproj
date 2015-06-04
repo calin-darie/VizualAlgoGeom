@@ -57,6 +57,9 @@
     <Compile Include="TextPositions\Top.cs" />
     <Compile Include="UniquePositionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\VersionAssemblyInfo.cs">
+      <Link>Properties\VersionAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="RayCanvasView.cs" />
     <Compile Include="RaysCanvasView.cs" />
     <Compile Include="TextPositionBuilder.cs" />

@@ -35,6 +35,9 @@
   <ItemGroup>
     <Compile Include="IDrawableOnCanvas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\VersionAssemblyInfo.cs">
+      <Link>Properties\VersionAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

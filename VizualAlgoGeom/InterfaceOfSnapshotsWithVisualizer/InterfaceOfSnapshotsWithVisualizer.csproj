@@ -39,6 +39,9 @@
     <Compile Include="ISnapshotRecorder.cs" />
     <Compile Include="ObjectSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\VersionAssemblyInfo.cs">
+      <Link>Properties\VersionAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InterfaceOfSnapshotsWithAlgorithmsAndVisualizer\InterfaceOfSnapshotsWithAlgorithmsAndVisualizer.csproj">
