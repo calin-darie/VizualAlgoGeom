@@ -45,7 +45,11 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\VersionAssemblyInfo.cs">
+      <Link>Properties\VersionAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="DrawableEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snapshot.cs" />
     <Compile Include="SnapshotPlayer.cs" />
     <Compile Include="SnapshotRecorder.cs" />

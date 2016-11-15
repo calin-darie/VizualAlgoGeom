@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("PointListDrawableWrapper")]
+[assembly: AssemblyTitle("ToolboxGeometricElements")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Home")]
 [assembly: AssemblyProduct("VizualAlgoGeom")]
-[assembly: AssemblyCopyright("Copyright ©  2011")]
+[assembly: AssemblyCopyright("Copyright © Home 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("e8c1b33c-0b32-469f-a9b4-10be829e230d")]
+[assembly: Guid("dfcf5da9-97eb-4376-b8e3-27addcf23d79")]
 
 // Version information for an assembly consists of the following four values:
 //
