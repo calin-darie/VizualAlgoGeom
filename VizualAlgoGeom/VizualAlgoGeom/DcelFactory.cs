@@ -97,23 +97,13 @@ namespace VizualAlgoGeom
       }
       return null;
     }
+    internal override void canvas_EnterPressed(object sender, KeyEventArgs  e)
+    {
+    }
 
-      internal override void canvas_EnterPressed(object sender, KeyEventArgs e)
-      {
-        if (_faceClosed && _dcelFacesAsPolyLines.Count>0)
-        {
-            RemoveMovingPoint();
-            if (_newPolyline.Points.Count == 0)
-                _dcelFacesAsPolyLines.Remove(_newPolyline);
-            //The polygon is complete
-            _inProgress = false;
-
-            //The controls (toolbox) are enabled
-            FireEnableControls(true);
-            _group.DcelList.Add(CreateDcel(_dcelFacesAsPolyLines));
-            _dcelFacesAsPolyLines.Clear();
-            //TODO add holes creation
-        }
+    internal override void canvas_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+        CloseDCEL();
     }
 
     private Dcel CreateDcel(List<Polyline> polylineList)
@@ -357,7 +347,7 @@ namespace VizualAlgoGeom
 
             else
           {
-              //Right Click will determine the opening/closing of a face
+              //Middle click will close of a face
               if (e.Button == MouseButtons.Middle)
               {
                   
@@ -373,31 +363,30 @@ namespace VizualAlgoGeom
                           canvas. .Add(lb);*/
                       }
                       else
-                      
-                      if (_newPolyline.Points.ElementAt(0).Equals(pointToSnapTo))
                       {
-                         
-                      _faceClosed = true;
-                      _newPolyline.Points.Remove(_movingPoint);
-                      
-                          _newPolyline.Points.Add(pointToSnapTo);
-                          // Right now, all faces will close in the starting point. TODO a better job
+                          if (_newPolyline.Points.ElementAt(0).Equals(pointToSnapTo))
+                          {
 
-                          NewPolyline(GetName());
-                          _dcelFacesAsPolyLines.Add(_newPolyline);
-                          _group.PolylineList.Polylines.Add(_newPolyline);
-                          //The moving point will be used to show the line that follows the mouse.
-                          //It is the last point in line strip's point list
+                              _faceClosed = true;
+                              _newPolyline.Points.Remove(_movingPoint);
 
-                          _movingPoint.Name = _newPolyline.Name + "_p";
-                          _newPolyline.Points.Add(_movingPoint);
-                          FireNewElementAdded(_newPolyline);
+                              _newPolyline.Points.Add(pointToSnapTo);
+                              // Right now, all faces will close in the starting point. TODO a better job
+
+                              NewPolyline(GetName());
+                              _dcelFacesAsPolyLines.Add(_newPolyline);
+                              _group.PolylineList.Polylines.Add(_newPolyline);
+                              //The moving point will be used to show the line that follows the mouse.
+                              //It is the last point in line strip's point list
+
+                              _movingPoint.Name = _newPolyline.Name + "_p";
+                              _newPolyline.Points.Add(_movingPoint);
+                              FireNewElementAdded(_newPolyline);
+                          }
                       }
-
                   }
                   else
-                  {
-                     
+                  {                     
                       _faceClosed = false;
                       _newPolyline.Points.Remove(_movingPoint);
                       _newPolyline.Points.Add(pointToSnapTo);
@@ -409,6 +398,24 @@ namespace VizualAlgoGeom
           }
          
     }
+
+      protected void CloseDCEL()
+      {
+          if (_faceClosed && _dcelFacesAsPolyLines.Count > 0)
+          {
+              RemoveMovingPoint();
+              if (_newPolyline.Points.Count == 0)
+                  _dcelFacesAsPolyLines.Remove(_newPolyline);
+              //The polygon is complete
+              _inProgress = false;
+
+              //The controls (toolbox) are enabled
+              FireEnableControls(true);
+              _group.DcelList.Add(CreateDcel(_dcelFacesAsPolyLines));
+              _dcelFacesAsPolyLines.Clear();
+              //TODO add holes creation
+          }
+      }
 
       protected void CleanPoints()
       {
