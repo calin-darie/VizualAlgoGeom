@@ -1,4 +1,6 @@
-﻿namespace VizualAlgoGeom
+﻿using System.Windows.Forms;
+
+namespace VizualAlgoGeom
 {
   internal class ClosedPolylineFactory : PolylineFactory
   {
@@ -8,5 +10,10 @@
       _polylineType = Polylines.ClosedPolyline;
       NewPolyline(GetName());
     }
+
+      internal override void canvas_EnterPressed(object sender, KeyEventArgs e)
+      {
+          throw new System.NotImplementedException();
+      }
   }
 }

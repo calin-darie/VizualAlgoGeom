@@ -220,13 +220,17 @@ namespace VizualAlgoGeom
       {
         // remove all previous event handlers
         CanvasControl.MouseAdapter.MouseLeftClick -= _lastFactory.canvas_MouseClick;
+        CanvasControl.MouseAdapter.MouseMiddleClick -= _lastFactory.canvas_MouseClick;
         CanvasControl.MouseAdapter.MouseMove -= _lastFactory.canvas_MouseMove;
         CanvasControl.MouseAdapter.MouseLeftDoubleClick -= _lastFactory.canvas_MouseDoubleClick;
+          CanvasControl.KeyboardAdapter.KeyEnter -= _lastFactory.canvas_EnterPressed;
       }
       // Canvas event will be listened by the element factory that was send through event args 
-      CanvasControl.MouseAdapter.MouseLeftClick += e._elementFactory.canvas_MouseClick;
+      CanvasControl.MouseAdapter.MouseLeftClick += e._elementFactory.canvas_MouseClick; 
+      CanvasControl.MouseAdapter.MouseMiddleClick += e._elementFactory.canvas_MouseClick;
       CanvasControl.MouseAdapter.MouseMove += e._elementFactory.canvas_MouseMove;
       CanvasControl.MouseAdapter.MouseLeftDoubleClick += e._elementFactory.canvas_MouseDoubleClick;
+        CanvasControl.KeyboardAdapter.KeyEnter += e._elementFactory.canvas_EnterPressed;
       // Last factory will be the current listener factory
       _lastFactory = e._elementFactory;
       CanvasControl.LastCursor = new Cursor(new MemoryStream(CursorsResource.Pen));
