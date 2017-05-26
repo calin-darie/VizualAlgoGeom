@@ -51,9 +51,9 @@ namespace VizualAlgoGeom
       }
       else
       {
-        _newLine.SecondPoint.X = x;
-        _newLine.SecondPoint.Y = y;
-        _newLine.SecondPoint.Name = _newLine.Name + "_p2";
+        var secondPoint = new Point(x, y, _newLine.Name + "_p2", _group, _group.Color);
+        _newLine.SecondPoint = secondPoint;
+        FireNewElementAdded(secondPoint);
         _inProgress = false;
         FireNewElementAdded(_newLine);
         FireEnableControls(true);
