@@ -133,13 +133,13 @@ namespace VizualAlgoGeom
                 var nextVertex = new DcelVertex(polyline.Points.ElementAt(nextIndex),polyline.Points.ElementAt(nextIndex).Name);
 
                 //Add the incident Edge pointer of the vertexes as you find them
-                if (!vertexList.Exists(x => x.getName().Equals(dcelVertex.getName())))
+                if (!vertexList.Exists(x => x.Name.Equals(dcelVertex.Name)))
                     vertexList.Add(dcelVertex);
 
-                if (!vertexList.Exists(x => x.getName().Equals(nextVertex.getName())))
+                if (!vertexList.Exists(x => x.Name.Equals(nextVertex.Name)))
                     vertexList.Add(nextVertex);
-                vertexIndexA = vertexList.FindIndex(x => x.getName().Equals(dcelVertex.getName()));
-                vertexIndexB = vertexList.FindIndex(x => x.getName().Equals(nextVertex.getName()));
+                vertexIndexA = vertexList.FindIndex(x => x.Name.Equals(dcelVertex.Name));
+                vertexIndexB = vertexList.FindIndex(x => x.Name.Equals(nextVertex.Name));
 
                 var halfEdge = new DcelHalfEdge(vertexList.ElementAt(vertexIndexA), vertexList.ElementAt(vertexIndexB));
                 halfEdges.Add(halfEdge);
@@ -282,8 +282,8 @@ namespace VizualAlgoGeom
         int lastIndexOuter = outerFaceList.Count-1;
         for (int i = 0; i <= lastIndexOuter; i++)
         {
-            DcelHalfEdge prev = outerFaceList.Find(x => x.GetEnd().getName().Equals(outerFaceList.ElementAt(i).GetStart().getName()));
-            DcelHalfEdge next = outerFaceList.Find(x => x.GetStart().getName().Equals(outerFaceList.ElementAt(i).GetEnd().getName()));
+            DcelHalfEdge prev = outerFaceList.Find(x => x.GetEnd().Name.Equals(outerFaceList.ElementAt(i).GetStart().Name));
+            DcelHalfEdge next = outerFaceList.Find(x => x.GetStart().Name.Equals(outerFaceList.ElementAt(i).GetEnd().Name));
             outerFaceList.ElementAt(i).SetNext(next);
             outerFaceList.ElementAt(i).SetPrev(prev);
             outerFaceList.ElementAt(i).SetFace(outerFace);

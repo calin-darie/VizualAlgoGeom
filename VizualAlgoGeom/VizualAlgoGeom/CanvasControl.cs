@@ -42,7 +42,6 @@ namespace VizualAlgoGeom
     private void InitializeKeyboardAdaptor()
     {
        KeyboardAdapter = new KeyboardAdapter(Canvas);
-       //KeyboardAdapter
     }
 
     void InitializeMouseAdaptor()
