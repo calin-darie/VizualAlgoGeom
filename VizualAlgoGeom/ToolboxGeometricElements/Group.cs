@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using GeometricElements;
 using Infrastructure;
 using System.Runtime.CompilerServices;
 
@@ -29,11 +31,13 @@ namespace ToolboxGeometricElements
       PolylineList = new PolylineList();
       ClosedPolylineList = new ClosedPolylineList();
       WeightedPointList = new PointList();
+      DcelList = new List<Dcel>();
 
       ResetAllIndex();
     }
 
-    [Category("Miscelaneous"),
+
+      [Category("Miscelaneous"),
      DisplayName("Color"),
      Description(""),
      Show(true)]
@@ -82,6 +86,7 @@ namespace ToolboxGeometricElements
     public ClosedPolylineList ClosedPolylineList { get; set; }
     public RayList RayList { get; set; }
     public LineList LineList { get; set; }
+    public List<Dcel> DcelList { get; set; }
     public int PointCurrentIndex { get; set; }
     public int WeightedPointCurrentIndex { get; set; }
     public int LineSegmentCurrentIndex { get; set; }

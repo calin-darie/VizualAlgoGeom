@@ -43,6 +43,7 @@ namespace VizualAlgoGeom
 
     internal event MouseEventHandler MouseLeftClick;
     internal event MouseEventHandler MouseRightClick;
+    internal event MouseEventHandler MouseMiddleClick;
     internal event MouseEventHandler MouseLeftDoubleClick;
     internal event MouseEventHandler MouseMove;
     internal event MouseEventHandler MouseDrag;
@@ -93,6 +94,8 @@ namespace VizualAlgoGeom
             FireMouseLeftClick(sender, e);
           else if (button == MouseButtons.Right)
             FireMouseRightClick(sender, e);
+          else if (button == MouseButtons.Middle)
+              FireMouseMiddleClick(sender, e);
         }
         else if (_clickcount == 2)
         {
@@ -103,36 +106,9 @@ namespace VizualAlgoGeom
 
       _isPressed[button] = false;
     }
-
-    void control_Click(object sender, EventArgs e)
-    {
-      /*ClickInfo info = new ClickInfo();
-            info.time = DateTime.Now;
-            info.position.x = e.X;
-            info.position.y = e.Y;
-
-            if ((info.time.Subtract(_LastClickInfo.time).Milliseconds > _DoubleClickTime ||
-                Math.Abs(info.position.x - _LastClickInfo.position.x) > _DoubleClickMaxDeltaX ||
-                Math.Abs(info.position.y - _LastClickInfo.position.y) > _DoubleClickMaxDeltaY))
-            {
-                _Clickcount = 0;
-            }
-
-            _Clickcount++;
-            _LastClickInfo = info;
-
-            if (_Clickcount == 1)
-            {
-                if (button == MouseButtons.Left)
-                    fireMouseLeftClick(sender, e);
-                else if (button == MouseButtons.Right)
-                    fireMouseRightClick(sender, e);
-            }
-            else if (_Clickcount == 2)
-            {
-                if (button == MouseButtons.Left)
-                    fireMouseLeftDoubleClick(sender, e);
-            }*/
+      
+      void control_Click(object sender, EventArgs e)
+    {      
     }
 
     void control_MouseMove(object sender, MouseEventArgs e)
@@ -210,6 +186,11 @@ namespace VizualAlgoGeom
     {
       if (MouseLeftClick != null)
         MouseLeftClick(sender, e);
+    }
+    void FireMouseMiddleClick(object sender, MouseEventArgs e)
+    {
+        if (MouseMiddleClick != null)
+            MouseMiddleClick(sender, e);
     }
 
     void FireMouseLeftDoubleClick(object sender, MouseEventArgs e)

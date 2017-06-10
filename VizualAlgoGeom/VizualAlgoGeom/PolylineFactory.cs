@@ -129,7 +129,11 @@ namespace VizualAlgoGeom
       ElementComplete.OnNext(_newPolyline);
     }
 
-    protected void RemoveMovingPoint()
+      internal override void canvas_EnterPressed(object sender, KeyEventArgs e)
+      {
+      }
+
+      protected void RemoveMovingPoint()
     {
       _newPolyline.Points.Remove(_movingPoint);
       FireElementDeleted();

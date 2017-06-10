@@ -33,6 +33,8 @@ namespace VizualAlgoGeom
     internal abstract void canvas_MouseDoubleClick(object sender, MouseEventArgs e);
     public Subject<GeometricElement> ElementComplete = new Subject<GeometricElement>();
 
+    internal abstract  void canvas_EnterPressed(object sender, KeyEventArgs e);
+
 
     protected void GetWorldCoordinates(double xWin, double yWin, double zWin, out double x, out double y, out double z)
     {

@@ -36,6 +36,10 @@
   <ItemGroup>
     <Compile Include="Circle.cs" />
     <Compile Include="AssertArgument.cs" />
+    <Compile Include="Dcel.cs" />
+    <Compile Include="DcelFace.cs" />
+    <Compile Include="DcelHalfEdge.cs" />
+    <Compile Include="DcelVertex.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="LineSegment.cs" />
     <Compile Include="Point.cs" />
@@ -48,6 +52,7 @@
     <Compile Include="Ray.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Triangle.cs" />
+    <Compile Include="Vertex.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

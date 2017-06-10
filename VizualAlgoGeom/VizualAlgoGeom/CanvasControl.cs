@@ -24,6 +24,7 @@ namespace VizualAlgoGeom
       InitializeCanvas();
       InitializeData();
       InitializeMouseAdaptor();
+      InitializeKeyboardAdaptor();
       Load += CanvasControl_Load;
       _drawAxes = true;
       _shouldDrawGrid = true;
@@ -36,6 +37,11 @@ namespace VizualAlgoGeom
       _zoomOx = DefaultZoomFactor;
       _zoomOy = DefaultZoomFactor;
       _isDragging = false;
+    }
+
+    private void InitializeKeyboardAdaptor()
+    {
+       KeyboardAdapter = new KeyboardAdapter(Canvas);
     }
 
     void InitializeMouseAdaptor()
@@ -425,6 +431,8 @@ namespace VizualAlgoGeom
     #region Properties
 
     internal MouseAdapter MouseAdapter { get; set; }
+
+    internal KeyboardAdapter KeyboardAdapter { get; set; }
 
     internal Data Data { get; set; }
 

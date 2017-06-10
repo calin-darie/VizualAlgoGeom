@@ -217,7 +217,8 @@ namespace VizualAlgoGeom
           cpl => new PolyLine(cpl.Points.Select(ConvertToGeometricElements).ToList(), closed: false)).ToList(),
         group.WeightedPointList.Points.GetWeightedPoints()
           .Select(wp => new Weighted<Point>(new Point(wp.X, wp.Y), wp.Weight))
-          .ToList());
+          .ToList(),
+         group.DcelList);
     }
 
     static Point ConvertToGeometricElements(ToolboxGeometricElements.Point p)
@@ -435,6 +436,7 @@ namespace VizualAlgoGeom
     {
       dockableControl.CanvasControl.CenterOrigin();
     }
+
   }
   
 }

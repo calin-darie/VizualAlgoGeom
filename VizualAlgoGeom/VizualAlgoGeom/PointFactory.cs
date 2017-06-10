@@ -52,5 +52,9 @@ namespace VizualAlgoGeom
     internal override void canvas_MouseDoubleClick(object sender, MouseEventArgs e)
     {
     }
+
+      internal override void canvas_EnterPressed(object sender, KeyEventArgs e)
+      {       
+      }
   }
 }
