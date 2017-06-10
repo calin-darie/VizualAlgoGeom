@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Darwen.Windows.Forms.Controls.Docking;
 using DefaultCanvasViews;
@@ -34,17 +40,48 @@ namespace VizualAlgoGeom
     OpenFileDialog _openDialog;
     AlgorithmSandbox _sandbox;
     readonly ISnapshotPlayer _snapshotPlayer = new SnapshotPlayer();
+    private static readonly string AutosavePath = Path.Combine(
+      Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+      "VizualAlgoGeom",
+      "autosave.current.xml");
+    private XmlIo<List<Group>> _xmlIo = new XmlIo<List<Group>>();
 
     public MainForm()
     {
       InitializeComponent();
       _InitializeComponent();
       new FormWithDockingChildrenStatePreserver(this, "mainForm");
+      Load += (s, e) => OnGotSynchronizationContext();
+    }
+
+    void OnGotSynchronizationContext()
+    {
+      dockableControl.ElementsChanged
+        .Throttle(TimeSpan.FromSeconds(3))
+        .ObserveOn(SynchronizationContext.Current)
+        .Subscribe(_ => Autosave());
+    }
+
+    async Task Autosave()
+    {
+      Debug.WriteLine("autosave");
+      toolStripStatusLabel.Text = Translations.MainForm_Autosaving;
+      
+      var success = await Save(AutosavePath);
+      if (!success)
+      {
+        //todo: log. send bug report.
+        toolStripStatusLabel.Text = Translations.MainForm_AutosaveFailed;
+      }
+      else
+      {
+        toolStripStatusLabel.Text = Translations.MainForm_AutosaveSucceeded;
+      }
     }
 
     void _InitializeComponent()
     {
-      _resources = new ComponentResourceManager(typeof (MainForm));
+      _resources = new ComponentResourceManager(typeof(MainForm));
 
       _openDialog = new OpenFileDialog
       {
@@ -298,7 +335,12 @@ namespace VizualAlgoGeom
         return;
       }
 
-      new XmlIo<Group[]>().SaveTo(destinationFileName, dockableControl.CanvasControl.Data.Groups.ToArray());
+      Save(destinationFileName).Wait();
+    }
+
+    async Task<bool> Save(string destinationFileName)
+    {
+      return await _xmlIo.SaveTo(destinationFileName, dockableControl.CanvasControl.Data.Groups);
     }
 
     void LoadPointsAndLinesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -321,7 +363,7 @@ namespace VizualAlgoGeom
         return;
       }
 
-      Group[] readGroups = new XmlIo<Group[]>().LoadFrom(sourceFileName);
+      var readGroups = _xmlIo.LoadFrom(sourceFileName);
       if (readGroups == null)
       {
         return;
@@ -329,7 +371,7 @@ namespace VizualAlgoGeom
       MergeGroups(readGroups);
     }
 
-    void MergeGroups(Group[] groupsToAdd)
+    void MergeGroups(List<Group> groupsToAdd)
     {
       foreach (Group group in groupsToAdd)
       {
@@ -394,4 +436,5 @@ namespace VizualAlgoGeom
       dockableControl.CanvasControl.CenterOrigin();
     }
   }
+  
 }

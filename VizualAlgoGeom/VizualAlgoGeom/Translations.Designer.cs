@@ -22,14 +22,14 @@ namespace VizualAlgoGeom {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ExceptionResources {
+    internal class Translations {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ExceptionResources() {
+        internal Translations() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace VizualAlgoGeom {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VizualAlgoGeom.ExceptionResources", typeof(ExceptionResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VizualAlgoGeom.Translations", typeof(Translations).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -281,6 +281,33 @@ namespace VizualAlgoGeom {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Autosave failed. Please try to save manually..
+        /// </summary>
+        internal static string MainForm_AutosaveFailed {
+            get {
+                return ResourceManager.GetString("MainForm_AutosaveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autosave succeeded..
+        /// </summary>
+        internal static string MainForm_AutosaveSucceeded {
+            get {
+                return ResourceManager.GetString("MainForm_AutosaveSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autosaving....
+        /// </summary>
+        internal static string MainForm_Autosaving {
+            get {
+                return ResourceManager.GetString("MainForm_Autosaving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Point similar to {X=0,Y=0}.
         /// </summary>
         internal static System.Drawing.Point menuStrip_Location {
@@ -497,33 +524,6 @@ namespace VizualAlgoGeom {
             get {
                 object obj = ResourceManager.GetObject("stPbAction.Size", resourceCulture);
                 return ((System.Drawing.Size)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incorrect file format (not the one the CLR expected).
-        /// </summary>
-        internal static string System_BadImageFormatException {
-            get {
-                return ResourceManager.GetString("System.BadImageFormatException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File could be read, but algorithm could not be loaded..
-        /// </summary>
-        internal static string System_IO_FileLoadException {
-            get {
-                return ResourceManager.GetString("System.IO.FileLoadException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File could not be found..
-        /// </summary>
-        internal static string System_IO_FileNotFoundException {
-            get {
-                return ResourceManager.GetString("System.IO.FileNotFoundException", resourceCulture);
             }
         }
         
@@ -1104,15 +1104,6 @@ namespace VizualAlgoGeom {
             get {
                 object obj = ResourceManager.GetObject("viewToolStripMenuItem.Size", resourceCulture);
                 return ((System.Drawing.Size)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The selected file does not implement the contract for providing an algorithm required by the visualizer..
-        /// </summary>
-        internal static string VizualAlgoGeom_AlgorithmFactoryNotFoundException {
-            get {
-                return ResourceManager.GetString("VizualAlgoGeom.AlgorithmFactoryNotFoundException", resourceCulture);
             }
         }
     }

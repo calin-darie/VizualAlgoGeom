@@ -1,14 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 using Infrastructure;
+using System.Runtime.CompilerServices;
 
 namespace ToolboxGeometricElements
 {
   public class Group : INotifyPropertyChanged
   {
     public event PropertyChangedEventHandler PropertyChanged;
-    String _name;
+    string _name;
     PointList _pointList;
+    Color _color;
 
     public Group()
       : this("DefaultGroup", System.Drawing.Color.Black)
@@ -35,19 +37,30 @@ namespace ToolboxGeometricElements
      DisplayName("Color"),
      Description(""),
      Show(true)]
-    public Color Color { get; set; }
+    public Color Color
+    {
+      get { return _color; }
+      set
+      {
+        if (_color == value) return;
+        _color = value;
+        this.OnPropertyChanged();
+      }
+    }
 
     [Category("Miscelaneous"),
      DisplayName("Name"),
      Description(""),
      Show(true)]
-    public String Name
+    public string Name
     {
       get { return _name; }
       set
       {
+        if (_name == value) return;
         _name = value;
         NotifyNameChanged(value);
+        OnPropertyChanged();
       }
     }
 
@@ -79,8 +92,7 @@ namespace ToolboxGeometricElements
 
     void NotifyNameChanged(string value)
     {
-      if (null != NameChanged)
-        NameChanged(this, new NameChangedEventArgs(value));
+      NameChanged?.Invoke(this, new NameChangedEventArgs(value));
     }
 
     public event NameChangedEventHandler NameChanged;
@@ -94,6 +106,12 @@ namespace ToolboxGeometricElements
       RayCurrentIndex = 0;
       PolylineCurrentIndex = 0;
       ClosedPolylineCurrentIndex = 0;
+    }
+
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
   }
 }

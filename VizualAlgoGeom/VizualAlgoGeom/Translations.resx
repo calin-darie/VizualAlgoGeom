@@ -907,16 +907,13 @@
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="System.BadImageFormatException" xml:space="preserve">
-    <value>Incorrect file format (not the one the CLR expected)</value>
+  <data name="MainForm_AutosaveFailed" xml:space="preserve">
+    <value>Autosave failed. Please try to save manually.</value>
   </data>
-  <data name="System.IO.FileLoadException" xml:space="preserve">
-    <value>File could be read, but algorithm could not be loaded.</value>
+  <data name="MainForm_Autosaving" xml:space="preserve">
+    <value>Autosaving...</value>
   </data>
-  <data name="System.IO.FileNotFoundException" xml:space="preserve">
-    <value>File could not be found.</value>
-  </data>
-  <data name="VizualAlgoGeom.AlgorithmFactoryNotFoundException" xml:space="preserve">
-    <value>The selected file does not implement the contract for providing an algorithm required by the visualizer.</value>
+  <data name="MainForm_AutosaveSucceeded" xml:space="preserve">
+    <value>Autosave succeeded.</value>
   </data>
 </root>

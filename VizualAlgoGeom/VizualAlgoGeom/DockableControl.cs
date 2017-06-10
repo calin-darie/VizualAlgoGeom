@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Windows.Forms;
 using Darwen.Windows.Forms.Controls.Docking;
 using InterfaceOfAlgorithmAdaptersWithVisualizer;
@@ -28,6 +32,8 @@ namespace VizualAlgoGeom
     IDockingControl _selectionDockingControl;
     ToolboxControl _toolboxControl;
     IDockingControl _toolboxDockingControl;
+    readonly Subject<Unit> _groupOrElementPropertyChanged = new Subject<Unit>();
+    public IObservable<Unit> ElementsChanged { get; private set; }
 
     public DockableControl()
     {
@@ -40,7 +46,6 @@ namespace VizualAlgoGeom
       OptionsBinding();
       PopulateSelectionTreeview();
       BindEvents();
-      GeometricElementFactoriesBindNewElementEvent();
     }
 
     internal Dictionary<string, IDockingControl> PreservableDockingControls { get; set; }
@@ -52,9 +57,28 @@ namespace VizualAlgoGeom
       CanvasControl.PropertyChanged += _optionsControl.PropertyChanged;
       _selectionControl.TvSelection.AfterSelect += _propertiesControl.SelectionChanged;
       _selectionControl.TvSelection.AfterSelect += tvSelection_AfterSelect;
-      CanvasControl.Data.CurrentGroup.NameChanged += _selectionControl.NameChanged; //default group
+      ReactToGroupAdded(CanvasControl.Data.CurrentGroup); //default group
       _selectionControl.ElementDeletedEvent += ElementDeletedEventHandler;
       _selectionControl.GroupAddedEvent += GroupAddedEvent;
+      
+      GeometricElementFactoriesBindEvents();
+
+      ElementsChanged = new[]
+      {
+        _groupOrElementPropertyChanged,
+        Observable.FromEvent<ElementDeletedEventHandler, EventArgs>(
+          h => ((s, e) => h(e)),
+          h => _selectionControl.ElementDeletedEvent += h,
+          h => _selectionControl.ElementDeletedEvent -= h
+        ).Select(_ => Unit.Default),
+        Observable.FromEvent<GroupAddedEventHandler, GroupAddedEventArgs>(
+          h => ((s, e) => h(e)),
+          h => _selectionControl.GroupAddedEvent += h,
+          h => _selectionControl.GroupAddedEvent -= h
+        ).Select(_ => Unit.Default)
+      }
+        .Concat(_toolboxControl.Factories.Select(f => f.ElementComplete.Select(_ => Unit.Default)))
+        .Merge();
     }
 
     void GroupAddedEvent(object sender, GroupAddedEventArgs e)
@@ -82,9 +106,15 @@ namespace VizualAlgoGeom
 
     internal Group AddGroup(Group newGroup)
     {
-      newGroup.NameChanged += _selectionControl.NameChanged;
+      ReactToGroupAdded(newGroup);
       CanvasControl.Data.Groups.Add(newGroup);
       return newGroup;
+    }
+
+    private void ReactToGroupAdded(Group newGroup)
+    {
+      newGroup.NameChanged += _selectionControl.NameChanged;
+      newGroup.PropertyChanged += (s, e) => _groupOrElementPropertyChanged.OnNext(Unit.Default);
     }
 
     void tvSelection_AfterSelect(object sender, TreeViewEventArgs e)
@@ -109,15 +139,10 @@ namespace VizualAlgoGeom
         new AttributeCollection(new ShowAttribute(true));
     }
 
-    void GeometricElementFactoriesBindNewElementEvent()
+    void GeometricElementFactoriesBindEvents()
     {
-      _toolboxControl.PointFactory.NewElementAdded += NewElementAdded;
-      _toolboxControl.LineSegmentFactory.NewElementAdded += NewElementAdded;
-      _toolboxControl.RayFactory.NewElementAdded += NewElementAdded;
-      _toolboxControl.LineFactory.NewElementAdded += NewElementAdded;
-      _toolboxControl.PolylineFactory.NewElementAdded += NewElementAdded;
-      _toolboxControl.ClosedPolylineFactory.NewElementAdded += NewElementAdded;
-      _toolboxControl.WeightedPointFactory.NewElementAdded += NewElementAdded;
+      _toolboxControl.Factories.ForEach(f => f.NewElementAdded += NewElementAdded);
+      
       _toolboxControl.PolylineFactory.ElementDeleted += ElementDeleted;
       _toolboxControl.ClosedPolylineFactory.ElementDeleted += ElementDeleted;
     }
@@ -137,8 +162,11 @@ namespace VizualAlgoGeom
     {
       geometricElement.NameChanged += _selectionControl.NameChanged;
       geometricElement.PropertyChanged += CanvasControl.PropertyChangedAction;
+      geometricElement.PropertyChanged += (s, e) => _groupOrElementPropertyChanged.OnNext(Unit.Default);
+
       PopulateSelectionTreeview();
     }
+
 
     void InitializeToolChangeEvent()
     {

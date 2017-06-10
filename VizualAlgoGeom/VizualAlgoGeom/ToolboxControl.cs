@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Remoting.Services;
 using System.Windows.Forms;
 using ToolboxGeometricElements;
@@ -36,6 +37,17 @@ namespace VizualAlgoGeom
       get { return _btCenter; }
     }
 
+    public List<Factory> Factories => new List<Factory>
+      {
+        PointFactory,
+        LineSegmentFactory,
+        RayFactory,
+        LineFactory,
+        PolylineFactory,
+        ClosedPolylineFactory,
+        WeightedPointFactory
+      };
+
     internal event ToolChangedEventHandler ToolChanged;
 
     void InitializeFactories()
@@ -50,7 +62,7 @@ namespace VizualAlgoGeom
       DcelFactory = new DcelFactory();
       AddFactoriesEnableControlsEventHandlers();
     }
-    
+
 
     void AddFactoriesEnableControlsEventHandlers()
     {
@@ -128,6 +140,6 @@ namespace VizualAlgoGeom
       DcelFactory.Group = group;
     }
 
- 
+
   }
 }

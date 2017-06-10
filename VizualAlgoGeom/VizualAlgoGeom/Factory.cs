@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Reactive.Subjects;
 using System.Windows.Forms;
 using OpenTK.Graphics.OpenGL;
 using Tao.OpenGl;
@@ -8,9 +9,9 @@ namespace VizualAlgoGeom
 {
   internal delegate void NewGeometricElmentEventHandler(object sender, NewGeometricElmentEventArgs e);
 
-  internal delegate void PropertyChangedHandler(object sender, PropertyChangedEventArgs e);
+  public delegate void PropertyChangedHandler(object sender, PropertyChangedEventArgs e);
 
-  internal abstract class Factory
+  public abstract class Factory
   {
     protected Group _group;
     protected PropertyChangedHandler _propertyChangedHandler;
@@ -30,6 +31,7 @@ namespace VizualAlgoGeom
     internal abstract void canvas_MouseClick(object sender, MouseEventArgs e);
     internal abstract void canvas_MouseMove(object sender, MouseEventArgs e);
     internal abstract void canvas_MouseDoubleClick(object sender, MouseEventArgs e);
+    public Subject<GeometricElement> ElementComplete = new Subject<GeometricElement>();
 
 
     protected void GetWorldCoordinates(double xWin, double yWin, double zWin, out double x, out double y, out double z)

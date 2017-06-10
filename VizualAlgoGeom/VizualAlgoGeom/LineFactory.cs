@@ -56,6 +56,7 @@ namespace VizualAlgoGeom
         FireNewElementAdded(secondPoint);
         _inProgress = false;
         FireNewElementAdded(_newLine);
+        ElementComplete.OnNext(_newLine);
         FireEnableControls(true);
         canvas.Invalidate();
       }

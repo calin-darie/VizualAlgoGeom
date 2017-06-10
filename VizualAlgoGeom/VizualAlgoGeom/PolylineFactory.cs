@@ -125,6 +125,8 @@ namespace VizualAlgoGeom
 
       //A new line strip is ready to be filled with points
       NewPolyline(GetName());
+
+      ElementComplete.OnNext(_newPolyline);
     }
 
     protected void RemoveMovingPoint()

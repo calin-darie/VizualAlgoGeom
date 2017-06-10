@@ -41,6 +41,7 @@ namespace VizualAlgoGeom
       }
       _pointList.Add(newPoint);
       FireNewElementAdded(newPoint);
+      ElementComplete.OnNext(newPoint);
       canvas.Invalidate();
     }
 
