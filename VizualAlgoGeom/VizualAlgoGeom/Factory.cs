@@ -31,6 +31,8 @@ namespace VizualAlgoGeom
     internal abstract void canvas_MouseMove(object sender, MouseEventArgs e);
     internal abstract void canvas_MouseDoubleClick(object sender, MouseEventArgs e);
 
+    internal abstract  void canvas_EnterPressed(object sender, KeyEventArgs e);
+
 
     protected void GetWorldCoordinates(double xWin, double yWin, double zWin, out double x, out double y, out double z)
     {

@@ -12,5 +12,6 @@ namespace InterfaceOfAlgorithmAdaptersWithVisualizer
     IList<PolyLine> ClosedPolylineList { get; }
     IList<PolyLine> PolyLineList { get; }
     IList<Weighted<Point>> WeightedPointList { get; }
+    IList<Dcel> DcelList { get; set; }
   }
 }

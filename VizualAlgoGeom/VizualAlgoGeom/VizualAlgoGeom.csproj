@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Factory.cs" />
     <Compile Include="GroupAddedEventArgs.cs" />
+    <Compile Include="KeyboardAdapter.cs" />
     <Compile Include="LineFactory.cs" />
     <Compile Include="LineSegmentFactory.cs" />
     <Compile Include="MouseAdapter.cs" />
