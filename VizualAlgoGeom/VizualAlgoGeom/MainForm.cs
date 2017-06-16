@@ -42,16 +42,15 @@ namespace VizualAlgoGeom
     readonly ISnapshotPlayer _snapshotPlayer = new SnapshotPlayer();
     private static readonly string AutosavePath = Path.Combine(
       Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-      "VizualAlgoGeom",
+      typeof(MainForm).Namespace,
       "autosave.current.xml");
-    private XmlIo<List<Group>> _xmlIo = new XmlIo<List<Group>>();
+    readonly XmlIo<List<Group>> _xmlIo = new XmlIo<List<Group>>();
 
     public MainForm()
     {
       InitializeComponent();
       _InitializeComponent();
       new FormWithDockingChildrenStatePreserver(this, "mainForm");
-      Load += (s, e) => OnGotSynchronizationContext();
     }
 
     void OnGotSynchronizationContext()
@@ -117,6 +116,8 @@ namespace VizualAlgoGeom
 
     void MainForm_Load(object sender, EventArgs args)
     {
+      OnGotSynchronizationContext();
+
       UpdatePlayerStatus();
     }
 
