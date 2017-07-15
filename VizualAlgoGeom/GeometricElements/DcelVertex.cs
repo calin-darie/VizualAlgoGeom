@@ -6,12 +6,12 @@ namespace GeometricElements
   [Serializable]
   public class DcelVertex
   {
-    public Point Point { get; }
+    public Point Point { get; private set; }
     public List<DcelHalfEdge> IncidentHalfEdges { get; private set; }
     public List<DcelHalfEdge> IncidentHalfEdgesUpperEndpoint { get; private set; }
-    public string Name { get; private set; }
-    public int DcelParent { get; set; }
+    public string Name { get; set; }
 
+    public DcelVertex() { }
     public DcelVertex(Point point, string name)
     {
       Point = point;

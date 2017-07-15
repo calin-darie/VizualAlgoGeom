@@ -31,7 +31,7 @@ namespace VizualAlgoGeom
     internal abstract void canvas_MouseClick(object sender, MouseEventArgs e);
     internal abstract void canvas_MouseMove(object sender, MouseEventArgs e);
     internal abstract void canvas_MouseDoubleClick(object sender, MouseEventArgs e);
-    public Subject<GeometricElement> ElementComplete = new Subject<GeometricElement>();
+    public Subject<object> ElementComplete = new Subject<object>();
 
     internal abstract  void canvas_EnterPressed(object sender, KeyEventArgs e);
 

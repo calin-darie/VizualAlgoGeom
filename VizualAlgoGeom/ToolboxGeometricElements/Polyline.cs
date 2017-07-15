@@ -15,7 +15,7 @@ namespace ToolboxGeometricElements
     /// <summary>
     ///   needed for serialization only
     /// </summary>
-    Polyline() : base(string.Empty, new Group(), System.Drawing.Color.Black)
+    public Polyline() : this(string.Empty, new Group(), System.Drawing.Color.Black)
     {
     }
 

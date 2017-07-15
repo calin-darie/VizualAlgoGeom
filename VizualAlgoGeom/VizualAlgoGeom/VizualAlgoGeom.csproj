@@ -47,6 +47,10 @@
     <Reference Include="DockingControls">
       <HintPath>..\..\lib\DockingControls.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="OpenTK">
       <HintPath>..\..\lib\OpenTK.dll</HintPath>
     </Reference>
@@ -59,7 +63,6 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Reactive.Core, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reactive.Core.3.1.1\lib\net46\System.Reactive.Core.dll</HintPath>
@@ -83,7 +86,6 @@
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.XML" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +137,10 @@
     </Compile>
     <Compile Include="DTO\AlgorithmInput.cs" />
     <Compile Include="EnableControlsEventArgs.cs" />
+    <Compile Include="FileSystem.cs" />
+    <Compile Include="IFileSystem.cs" />
+    <Compile Include="ISerializer.cs" />
+    <Compile Include="Serializer.cs" />
     <Compile Include="Translations.Designer.cs">
       <DependentUpon>Translations.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -207,7 +213,7 @@
     <Compile Include="ToolChangedEventArgs.cs" />
     <Compile Include="WeightedPointFactory.cs" />
     <Compile Include="WeightedPointRecovery.cs" />
-    <Compile Include="XmlIo.cs" />
+    <Compile Include="Persister.cs" />
     <EmbeddedResource Include="AlgorithmControl.resx">
       <DependentUpon>AlgorithmControl.cs</DependentUpon>
     </EmbeddedResource>

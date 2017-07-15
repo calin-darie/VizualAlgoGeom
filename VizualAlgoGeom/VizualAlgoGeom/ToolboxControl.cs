@@ -10,13 +10,6 @@ namespace VizualAlgoGeom
 
   public partial class ToolboxControl : UserControl
   {
-    //internal Button btSelect
-    //{
-    //    get
-    //    {
-    //        return _btSelect;
-    //    }
-    //}
     internal ToolboxControl()
     {
       InitializeComponent();
@@ -38,15 +31,16 @@ namespace VizualAlgoGeom
     }
 
     public List<Factory> Factories => new List<Factory>
-      {
-        PointFactory,
-        LineSegmentFactory,
-        RayFactory,
-        LineFactory,
-        PolylineFactory,
-        ClosedPolylineFactory,
-        WeightedPointFactory
-      };
+    {
+      PointFactory,
+      LineSegmentFactory,
+      RayFactory,
+      LineFactory,
+      PolylineFactory,
+      ClosedPolylineFactory,
+      WeightedPointFactory,
+      DcelFactory
+    };
 
     internal event ToolChangedEventHandler ToolChanged;
 

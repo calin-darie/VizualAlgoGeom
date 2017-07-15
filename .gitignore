@@ -213,3 +213,4 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+/VizualAlgoGeom/Newtonsoft.Json.10.0.2

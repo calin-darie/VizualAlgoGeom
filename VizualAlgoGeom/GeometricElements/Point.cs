@@ -9,19 +9,16 @@ namespace GeometricElements
   {
     protected bool Equals(Point other)
     {
-      return _x.Equals(other._x) && _y.Equals(other._y);
+      return X.Equals(other.X) && Y.Equals(other.Y);
     }
 
     public override int GetHashCode()
     {
       unchecked
       {
-        return (_x.GetHashCode()*397) ^ _y.GetHashCode();
+        return (X.GetHashCode()*397) ^ Y.GetHashCode();
       }
     }
-
-    readonly double _x;
-    readonly double _y;
 
     public Point()
       : this(0, 0)
@@ -38,19 +35,13 @@ namespace GeometricElements
     {
       AssertArgument.IsFiniteNumber(x, "x");
       AssertArgument.IsFiniteNumber(y, "y");
-      _x = x;
-      _y = y;
+      X = x;
+      Y = y;
     }
-
-    public double X
-    {
-      get { return _x; }
-    }
-
-    public double Y
-    {
-      get { return _y; }
-    }
+    
+    public double X { get; private set; }
+    
+    public double Y { get; private set; }
 
     public override bool Equals(object obj)
     {

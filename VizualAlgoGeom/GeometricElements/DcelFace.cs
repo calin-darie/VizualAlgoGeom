@@ -6,33 +6,14 @@ namespace GeometricElements
   [Serializable]
   public class DcelFace
   {
-    DcelHalfEdge _outerComponent;
-    DcelHalfEdge _innerComponent;
+    public DcelHalfEdge OuterComponent { get; set; }
+    public DcelHalfEdge InnerComponent { get; set; }
     readonly string _name;
-    public int DcelParent { get; set; }
-
+    
+    public DcelFace() { }
     public DcelFace(int faceCount)
     {
       _name = "f" + faceCount;
-    }
-
-    public void SetOuterComponent(DcelHalfEdge e)
-    {
-      _outerComponent = e;
-    }
-
-    public void SetInnerComponent(DcelHalfEdge e)
-    {
-      _innerComponent = e;
-    }
-
-    public DcelHalfEdge GetOuterComponent()
-    {
-      return _outerComponent;
-    }
-    public DcelHalfEdge GetInnerComponent()
-    {
-      return _innerComponent;
     }
 
     public string GetName() { return _name; }
@@ -40,13 +21,13 @@ namespace GeometricElements
     public bool IsOriented()
     {
       bool allOriented = true;
-      DcelHalfEdge e = _outerComponent;
+      DcelHalfEdge e = OuterComponent;
       DcelHalfEdge travelPerimeter = e;
       do
       {
-        if (!travelPerimeter.IsOriented())
+        if (!travelPerimeter.IsOriented)
           allOriented = false;
-        travelPerimeter = DcelHalfEdge.Next(travelPerimeter);
+        travelPerimeter = travelPerimeter.Next;
       }
       while (!travelPerimeter.Equals(e));
 
@@ -55,48 +36,48 @@ namespace GeometricElements
 
     public void LockEdgesPoints()
     {
-      DcelHalfEdge e = _outerComponent;
+      DcelHalfEdge e = OuterComponent;
       DcelHalfEdge travelPerimeter = e;
       do
       {
         travelPerimeter.LockOrientation();
-        travelPerimeter = DcelHalfEdge.Next(travelPerimeter);
+        travelPerimeter = travelPerimeter.Next;
       }
       while (!travelPerimeter.Equals(e));
     }
 
     public void SwapEdgesOrientation()
     {
-      DcelHalfEdge e = _outerComponent;
+      DcelHalfEdge e = OuterComponent;
       DcelHalfEdge travelPerimeter = e;
       do
       {
         travelPerimeter.SwapEndPoints();
-        travelPerimeter = DcelHalfEdge.Next(travelPerimeter);
+        travelPerimeter = travelPerimeter.Next;
       }
       while (!travelPerimeter.Equals(e));
     }
 
     public IEnumerable<DcelHalfEdge> HalfEdges()
     {
-      if (GetOuterComponent() != null)
+      if (OuterComponent != null)
       {
-        DcelHalfEdge start = GetOuterComponent();
+        DcelHalfEdge start = OuterComponent;
         DcelHalfEdge travelPerimeter = start;
         do
         {
           yield return travelPerimeter;
-          travelPerimeter = DcelHalfEdge.Next(travelPerimeter);
+          travelPerimeter = travelPerimeter.Next;
         } while (!travelPerimeter.Equals(start));
       }
-      if (GetInnerComponent() != null)
+      if (InnerComponent != null)
       {
-        DcelHalfEdge start = GetInnerComponent();
+        DcelHalfEdge start = InnerComponent;
         DcelHalfEdge travelPerimeter = start;
         do
         {
           yield return travelPerimeter;
-          travelPerimeter = DcelHalfEdge.Next(travelPerimeter);
+          travelPerimeter = travelPerimeter.Next;
         } while (!travelPerimeter.Equals(start));
       }
     }

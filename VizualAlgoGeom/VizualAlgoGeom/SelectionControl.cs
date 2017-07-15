@@ -152,6 +152,7 @@ namespace VizualAlgoGeom
         //The node is a geometric element and we have to remove it from its certain list
 
         var element = (GeometricElement) node.Tag;
+        
         Group elementGroup = element.Group;
         switch (node.Parent.Text)
         {

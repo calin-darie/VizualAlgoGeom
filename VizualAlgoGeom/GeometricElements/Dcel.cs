@@ -4,68 +4,63 @@ using System.Diagnostics;
 
 namespace GeometricElements
 {
-    [Serializable]
-   public class Dcel
-   {
-        public List<DcelFace> DcelFaces { get; private set; }
-        List<DcelVertex> _dcelVertex;
-        static int _currentDcelCount=0;
+  [Serializable]
+  public class Dcel
+  {
+    public List<DcelFace> DcelFaces { get; }
+    readonly List<DcelVertex> _dcelVertex;
 
-       public Dcel(List<DcelFace> faceList,  List<DcelVertex> dcelVertex)
-       {
-           _dcelVertex = dcelVertex;
-           DcelFaces= faceList;
-           _currentDcelCount++;
-           finalHalfEdgeModifications();
-       }
+    public Dcel() { DcelFaces = new List<DcelFace>(); }
+    public Dcel(List<DcelFace> dcelFaces, List<DcelVertex> dcelVertex)
+    {
+      _dcelVertex = dcelVertex;
+      DcelFaces = dcelFaces;
+      FinalHalfEdgeModifications();
+    }
 
-        void finalHalfEdgeModifications()
+    void FinalHalfEdgeModifications()
+    {
+      foreach (DcelFace face in DcelFaces)
+      {
+        foreach (DcelHalfEdge halfEdge in face.HalfEdges())
         {
-            foreach (DcelFace face in DcelFaces)
-            {
-                face.DcelParent = _currentDcelCount;
-                foreach (DcelHalfEdge halfEdge in face.HalfEdges())
-                {
-                    halfEdge.SetUpperLowerEndPoints();
-                    halfEdge.DcelParent = _currentDcelCount;
-                    halfEdge.GetStart().DcelParent = _currentDcelCount;
-                    halfEdge.GetEnd().DcelParent = _currentDcelCount;
-                    halfEdge.GetUpper().AddIncidentEdgeOnUpperPoint(halfEdge);
-                }
-            }
+          halfEdge.SetUpperLowerEndPoints();
+          halfEdge.Upper.AddIncidentEdgeOnUpperPoint(halfEdge);
         }
+      }
+    }
 
-        //Debug printing:
-        //----------------------------------------------------------
-        //Prints all face names, half-edges and vertexes in this dcel
-       public void DebugPrint()
-       {
-           foreach (DcelFace face in DcelFaces)
-           {
-               foreach (DcelHalfEdge halfEdge in face.HalfEdges())
-               {
-                   Debug.Print(halfEdge.GetName() + " : " + halfEdge.GetStart().Name + " -> " +
-                               halfEdge.GetEnd().Name + " in face " + face.GetName());
-                   Debug.Print("Twin : " + halfEdge.GetTwin().GetName() + " : " +
-                               halfEdge.GetTwin().GetStart().Name + " -> " +
-                               halfEdge.GetTwin().GetEnd().Name + " in face " +
-                               halfEdge.GetTwin().GetFace().GetName() + "\n\n");
-               }
-           }
-       }
-
-        //Prints all the vertexes in this dcel
-        public void DebugVertexPrint()
+    //Debug printing:
+    //----------------------------------------------------------
+    //Prints all face names, half-edges and vertexes in this dcel
+    public void DebugPrint()
+    {
+      foreach (DcelFace face in DcelFaces)
+      {
+        foreach (DcelHalfEdge halfEdge in face.HalfEdges())
         {
-            foreach (DcelVertex vertex in _dcelVertex)
-            {
-                Debug.Print(vertex.Name+" incident with + ");
-                foreach (DcelHalfEdge hedge in vertex.IncidentHalfEdges)
-                {
-                    Debug.Print(hedge.GetName() + ", ");
-                }
-                Debug.Print("\n");
-            }
+          Debug.Print(halfEdge.Name + " : " + halfEdge.Start.Name + " -> " +
+                      halfEdge.End.Name + " in face " + face.GetName());
+          Debug.Print("Twin : " + halfEdge.Twin.Name + " : " +
+                      halfEdge.Twin.Start.Name + " -> " +
+                      halfEdge.Twin.End.Name + " in face " +
+                      halfEdge.Twin.IncidentFace.GetName() + "\n\n");
         }
-   }
+      }
+    }
+
+    //Prints all the vertexes in this dcel
+    public void DebugVertexPrint()
+    {
+      foreach (DcelVertex vertex in _dcelVertex)
+      {
+        Debug.Print(vertex.Name + " incident with + ");
+        foreach (DcelHalfEdge hedge in vertex.IncidentHalfEdges)
+        {
+          Debug.Print(hedge.Name + ", ");
+        }
+        Debug.Print("\n");
+      }
+    }
+  }
 }

@@ -14,7 +14,7 @@ namespace VizualAlgoGeom
 
   public delegate void ElementDeleted(object sender, EventArgs e);
 
-  internal class PolylineFactory : Factory
+  public class PolylineFactory : Factory
   {
     protected bool _inProgress;
     protected Point _movingPoint;

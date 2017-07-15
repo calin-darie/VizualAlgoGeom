@@ -12,8 +12,10 @@ namespace ToolboxGeometricElements
     /// <summary>
     ///   needed for serialization only
     /// </summary>
-    Point()
-      : base(string.Empty, new Group(), System.Drawing.Color.Black)
+    public Point():base("", null, null) { }
+
+    public Point(double x, double y, string name = "")
+      : this(x, y, name, new Group(), System.Drawing.Color.Black)
     {
     }
 

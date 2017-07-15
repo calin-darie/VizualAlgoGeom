@@ -4,16 +4,13 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reactive;
 using System.Reactive.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Darwen.Windows.Forms.Controls.Docking;
 using DefaultCanvasViews;
 using GeometricElements;
-using Infrastructure;
 using InterfaceOfAlgorithmAdaptersWithVisualizer;
 using InterfaceOfSnapshotsWithAlgorithmsAndVisualizer;
 using InterfaceOfSnapshotsWithVisualizer;
@@ -44,7 +41,7 @@ namespace VizualAlgoGeom
       Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
       typeof(MainForm).Namespace,
       "autosave.current.xml");
-    readonly XmlIo<List<Group>> _xmlIo = new XmlIo<List<Group>>();
+    readonly Persister<List<Group>> _persister = new Persister<List<Group>>(new FileSystem(), new Serializer());
 
     public MainForm()
     {
@@ -56,7 +53,7 @@ namespace VizualAlgoGeom
     void OnGotSynchronizationContext()
     {
       dockableControl.ElementsChanged
-        .Throttle(TimeSpan.FromSeconds(3))
+        .Throttle(TimeSpan.FromSeconds(5))
         .ObserveOn(SynchronizationContext.Current)
         .Subscribe(_ => Autosave());
     }
@@ -65,17 +62,18 @@ namespace VizualAlgoGeom
     {
       Debug.WriteLine("autosave");
       toolStripStatusLabel.Text = Translations.MainForm_Autosaving;
-      
-      var success = await Save(AutosavePath);
-      if (!success)
+      bool success;
+      try
+      {
+        await Save(AutosavePath);
+        success = true;
+      }
+      catch (Exception e)
       {
         //todo: log. send bug report.
-        toolStripStatusLabel.Text = Translations.MainForm_AutosaveFailed;
+        success = false;
       }
-      else
-      {
-        toolStripStatusLabel.Text = Translations.MainForm_AutosaveSucceeded;
-      }
+      toolStripStatusLabel.Text = success ? Translations.MainForm_AutosaveSucceeded : Translations.MainForm_AutosaveFailed;
     }
 
     void _InitializeComponent()
@@ -99,6 +97,7 @@ namespace VizualAlgoGeom
       _dockingWindowListMenuItem.Initialise(dockableControl);
 
       Load += MainForm_Load;
+      Load += (s, e) => AutoLoad();
     }
 
     void _InitializeAlgorithmToolStrip()
@@ -116,9 +115,21 @@ namespace VizualAlgoGeom
 
     void MainForm_Load(object sender, EventArgs args)
     {
-      OnGotSynchronizationContext();
-
       UpdatePlayerStatus();
+
+      OnGotSynchronizationContext();
+    }
+
+    async void AutoLoad()
+    {
+      try
+      {
+        await LoadFrom(AutosavePath);
+      }
+      catch (Exception e)
+      {
+        Debug.WriteLine(e);
+      }
     }
 
     public void _snapshotPlayer_OnSnapshotChange(object sender)
@@ -340,9 +351,9 @@ namespace VizualAlgoGeom
       Save(destinationFileName).Wait();
     }
 
-    async Task<bool> Save(string destinationFileName)
+    async Task Save(string destinationFileName)
     {
-      return await _xmlIo.SaveTo(destinationFileName, dockableControl.CanvasControl.Data.Groups);
+      await _persister.SaveTo(destinationFileName, dockableControl.CanvasControl.Data.Groups);
     }
 
     void LoadPointsAndLinesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -365,7 +376,12 @@ namespace VizualAlgoGeom
         return;
       }
 
-      var readGroups = _xmlIo.LoadFrom(sourceFileName);
+      LoadFrom(sourceFileName).Wait();
+    }
+
+    async Task LoadFrom(string sourceFileName)
+    {
+      var readGroups = await _persister.LoadFrom(sourceFileName);
       if (readGroups == null)
       {
         return;
@@ -406,6 +422,8 @@ namespace VizualAlgoGeom
       MergeElementLists(group, existingGroup, g => g.LineSegmentList.Lines);
       MergeElementLists(group, existingGroup, g => g.RayList.Lines);
       MergeElementLists(group, existingGroup, g => g.WeightedPointList.Points);
+      MergeElementLists(group, existingGroup, g => g.PolylineList.Polylines);
+      existingGroup.DcelList.AddRange(group.DcelList.Where(d => !existingGroup.DcelList.Contains(d)));
     }
 
     void MergeElementLists<TElement>(
@@ -419,7 +437,6 @@ namespace VizualAlgoGeom
       {
         if (!existingList.Contains(element))
         {
-          element.Color = existingGroup.Color;
           element.Group = existingGroup;
 
           existingList.Add(element);

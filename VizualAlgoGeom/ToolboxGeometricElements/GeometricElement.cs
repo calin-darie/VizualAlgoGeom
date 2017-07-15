@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Xml.Serialization;
 using Infrastructure;
 
 namespace ToolboxGeometricElements
@@ -34,8 +33,7 @@ namespace ToolboxGeometricElements
         NotifyPropertyChanged("Name");
       }
     }
-
-    [XmlIgnore]
+    
     public Group Group { get; set; }
 
     [Category("Miscelaneous"),
