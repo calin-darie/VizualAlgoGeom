@@ -46,18 +46,24 @@ namespace VizualAlgoGeom
       if (_algorithmLoader != null)
         _algorithmLoader.RunAlgorithm(_fileName);
     }
-    void _algorithmExecuter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs args)
+    async void _algorithmExecuter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs args)
     {
       Exception exception = args.Error;
       if (exception != null)
       {
-        MessageBox.Show(
+        Logger.Error(exception, $"loading algorithm {AlgorithmName}");
+        await IssueReporting.TakeSnapshot();
+
+        var result = MessageBox.Show(
           _resources.GetString("please contact author"),
           _resources.GetString("algorithm execution problem"),
-          MessageBoxButtons.OK,
+          MessageBoxButtons.YesNo,
           MessageBoxIcon.Error);
-        
-        Logger.Error(exception, $"error in algorithm {AlgorithmName}");
+
+        if (result == DialogResult.Yes)
+        {
+          IssueReporting.OpenSnapshotFolderAndIssueTracker();
+        }
       }
       else
         DialogResult = DialogResult.OK;

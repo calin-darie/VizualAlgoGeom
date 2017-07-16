@@ -68,6 +68,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Reactive.Core, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reactive.Core.3.1.1\lib\net46\System.Reactive.Core.dll</HintPath>
       <Private>True</Private>
@@ -144,6 +146,7 @@
     <Compile Include="FileSystem.cs" />
     <Compile Include="IFileSystem.cs" />
     <Compile Include="ISerializer.cs" />
+    <Compile Include="IssueReporting.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="Translations.Designer.cs">
       <DependentUpon>Translations.resx</DependentUpon>
@@ -358,9 +361,6 @@
   <ItemGroup>
     <None Include="ajax-loader.gif" />
     <None Include="ajax-loader_big_snake.gif" />
-    <None Include="bin\Debug\DraggingHand.cur" />
-    <None Include="bin\Debug\Pen.cur" />
-    <None Include="bin\Debug\PointingFinger.cur" />
     <Content Include="DraggingHand.cur">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
@@ -39,8 +38,7 @@ namespace VizualAlgoGeom
     AlgorithmSandbox _sandbox;
     readonly ISnapshotPlayer _snapshotPlayer = new SnapshotPlayer();
     static readonly string AutosavePath = Path.Combine(
-      Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-      typeof(MainForm).Namespace,
+      Settings.DataFolder,
       "autosave.current.json");
     readonly Persister<List<Group>> _persister = new Persister<List<Group>>(new FileSystem(), new Serializer());
     static readonly Logger Logger = LogManager.GetCurrentClassLogger();
@@ -72,8 +70,10 @@ namespace VizualAlgoGeom
       }
       catch (Exception e)
       {
-        //todo: log. send bug report.
         success = false;
+        Logger.Error(e, "autosave failed");
+        IssueReporting.TakeSnapshot();
+        //todo: send bug report.
       }
       toolStripStatusLabel.Text = success ? Translations.MainForm_AutosaveSucceeded : Translations.MainForm_AutosaveFailed;
     }

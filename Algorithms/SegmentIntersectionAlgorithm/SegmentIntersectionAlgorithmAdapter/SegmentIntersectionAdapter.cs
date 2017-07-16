@@ -33,6 +33,8 @@ namespace SegmentIntersectionAlgorithmAdapter
         segmentIntersectionAlgorithm.FindIntersections();
         _snapshotRecorder.TakeSnapshot(_snapshotDescriptions.IntersectionsFound);
       }
+      //todo remove
+      throw new Exception("test zip");
     }
 
     static readonly Line DummySweepLine = new Line(1, 1, 1);
