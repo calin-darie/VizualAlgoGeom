@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
+using NLog;
 using VizualAlgoGeom.AssemblyLoading;
 
 namespace VizualAlgoGeom
@@ -10,6 +12,7 @@ namespace VizualAlgoGeom
     ComponentResourceManager _resources;
     readonly AlgorithmLoader _algorithmLoader;
     readonly string _fileName;
+    static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     public AlgorithmLoadProgressDialog()
       : this(null, null)
@@ -43,20 +46,25 @@ namespace VizualAlgoGeom
       if (_algorithmLoader != null)
         _algorithmLoader.RunAlgorithm(_fileName);
     }
-
     void _algorithmExecuter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs args)
     {
       Exception exception = args.Error;
       if (exception != null)
+      {
         MessageBox.Show(
           _resources.GetString("please contact author"),
           _resources.GetString("algorithm execution problem"),
           MessageBoxButtons.OK,
           MessageBoxIcon.Error);
+        
+        Logger.Error(exception, $"error in algorithm {AlgorithmName}");
+      }
       else
         DialogResult = DialogResult.OK;
       Close();
     }
+
+    public string AlgorithmName => Path.GetFileName(_fileName)?.Replace(".dll", "") ?? string.Empty;
 
     public new DialogResult ShowDialog()
     {

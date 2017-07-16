@@ -14,7 +14,7 @@ namespace ToolboxGeometricElements
     /// <summary>
     ///   needed for serialization only
     /// </summary>
-    Line()
+    public Line()
       : base(string.Empty, new Group(), System.Drawing.Color.Black)
     {
     }

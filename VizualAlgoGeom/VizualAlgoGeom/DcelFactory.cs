@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using GeometricElements;
+using NLog;
 using OpenTK;
 using ToolboxGeometricElements;
 using Point = ToolboxGeometricElements.Point;
@@ -23,14 +22,13 @@ namespace VizualAlgoGeom
 
   public class DcelFactory : PolylineFactory
   {
-    Cursor _lastCursor;
     Point pointToSnapTo;
     readonly List<Polyline> _dcelFacesAsPolyLines;
     bool _faceClosed;
+    static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     public DcelFactory()
     {
-      this._lastCursor = new Cursor(new MemoryStream(CursorsResource.Pen));
       _dcelFacesAsPolyLines = new List<Polyline>();
       _faceClosed = true;
     }
@@ -108,9 +106,6 @@ namespace VizualAlgoGeom
 
     public static Dcel CreateDcel(List<Polyline> polylineList)
     {
-      //var Faces;
-      //var Point;
-      var vertexList = new List<DcelVertex>();
       var faceList = new List<DcelFace>();
 
       var faceCount = 1;
@@ -124,6 +119,7 @@ namespace VizualAlgoGeom
         faceCount++;
         var lastIndex = polyline.Points.Count - 2;
         List<DcelHalfEdge> halfEdges = new List<DcelHalfEdge>();
+        var vertexList = new List<DcelVertex>();
         for (int i = 0; i <= lastIndex; i++)
         {
           //i and i+1
@@ -186,7 +182,6 @@ namespace VizualAlgoGeom
         DcelHalfEdge travelPerimeter = start;
         do
         {
-          //Debug.Print(travelPerimeter.GetName());
           bool hasTwin = travelPerimeter.Twin == null;
           if (hasTwin)
           {
@@ -218,7 +213,7 @@ namespace VizualAlgoGeom
 
                         df2.LockEdgesPoints();
                       }
-                      else { Debug.Print("Locking Error. Wrong orientation for edges in face" + df2.GetName()); }
+                      else { Logger.Error("Locking Error. Wrong orientation for edges in face" + df2.GetName()); }
                     }
                     break;
                   }
@@ -290,7 +285,7 @@ namespace VizualAlgoGeom
 
       outerFace.InnerComponent = null;
       faceList.Add(outerFace);
-      var newDcel = new Dcel(faceList, vertexList);
+      var newDcel = new Dcel(faceList);
 
       //At this point, the dcel is complete. We have linked all edges with their twins.
       //All that is left is to compute the holes in a face. TODO holes at a later stage
@@ -298,7 +293,7 @@ namespace VizualAlgoGeom
       //Cout the full dcel:
       //newDcel.DebugPrint();
 
-      Debug.Print("Succesfully created new Dcel");
+      Logger.Debug("Succesfully created new Dcel");
       return newDcel;
     }
 
@@ -354,7 +349,7 @@ namespace VizualAlgoGeom
           {
             if (_newPolyline.Points.Count < 4)
             {
-              Debug.Print("Cannot create face without a minimum of three points!");
+              Logger.Debug("Cannot create face without a minimum of three points!");
               /* TODO add a label on wrong click
               Label lb = new Label();
               lb.Location = new System.Drawing.Point(e.X,e.Y);

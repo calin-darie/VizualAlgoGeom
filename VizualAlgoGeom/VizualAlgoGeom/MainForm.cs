@@ -14,6 +14,7 @@ using GeometricElements;
 using InterfaceOfAlgorithmAdaptersWithVisualizer;
 using InterfaceOfSnapshotsWithAlgorithmsAndVisualizer;
 using InterfaceOfSnapshotsWithVisualizer;
+using NLog;
 using Snapshots;
 using ToolboxGeometricElements;
 using VizualAlgoGeom.AssemblyLoading;
@@ -37,11 +38,12 @@ namespace VizualAlgoGeom
     OpenFileDialog _openDialog;
     AlgorithmSandbox _sandbox;
     readonly ISnapshotPlayer _snapshotPlayer = new SnapshotPlayer();
-    private static readonly string AutosavePath = Path.Combine(
+    static readonly string AutosavePath = Path.Combine(
       Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
       typeof(MainForm).Namespace,
       "autosave.current.json");
     readonly Persister<List<Group>> _persister = new Persister<List<Group>>(new FileSystem(), new Serializer());
+    static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     public MainForm()
     {
@@ -60,7 +62,7 @@ namespace VizualAlgoGeom
 
     async Task Autosave()
     {
-      Debug.WriteLine("autosave");
+      Logger.Debug("autosave");
       toolStripStatusLabel.Text = Translations.MainForm_Autosaving;
       bool success;
       try
@@ -128,7 +130,7 @@ namespace VizualAlgoGeom
       }
       catch (Exception e)
       {
-        Debug.WriteLine(e);
+        Logger.Warn(e);
       }
     }
 
