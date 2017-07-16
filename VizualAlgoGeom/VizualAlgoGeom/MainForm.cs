@@ -40,7 +40,7 @@ namespace VizualAlgoGeom
     private static readonly string AutosavePath = Path.Combine(
       Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
       typeof(MainForm).Namespace,
-      "autosave.current.xml");
+      "autosave.current.json");
     readonly Persister<List<Group>> _persister = new Persister<List<Group>>(new FileSystem(), new Serializer());
 
     public MainForm()
