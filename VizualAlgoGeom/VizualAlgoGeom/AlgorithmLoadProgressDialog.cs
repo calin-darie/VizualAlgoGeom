@@ -55,7 +55,7 @@ namespace VizualAlgoGeom
         await IssueReporting.TakeSnapshot();
 
         var result = MessageBox.Show(
-          _resources.GetString("please contact author"),
+          string.Format(_resources.GetString("please contact author"), IssueReporting.Folder),
           _resources.GetString("algorithm execution problem"),
           MessageBoxButtons.YesNo,
           MessageBoxIcon.Error);

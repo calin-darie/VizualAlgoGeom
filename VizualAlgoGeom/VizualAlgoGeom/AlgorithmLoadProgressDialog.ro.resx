@@ -141,6 +141,6 @@
     <value>A apărut o problemă la execuția algoritmului</value>
   </data>
   <data name="please contact author" xml:space="preserve">
-    <value>A fost creată o arhivă cu autosave-ul și logurile curente în %appdata%/VizualAlgoGeom/IssueReporting. Te rog atașează fișierul într-un issue. Vrei să faci asta acum?</value>
+    <value>A fost creată o arhivă cu autosave-ul și logurile curente în {0}. Te rog atașează fișierul într-un issue. Vrei să faci asta acum?</value>
   </data>
 </root>

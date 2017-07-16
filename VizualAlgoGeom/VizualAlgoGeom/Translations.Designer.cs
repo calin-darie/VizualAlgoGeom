@@ -388,6 +388,24 @@ namespace VizualAlgoGeom {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fatal error.
+        /// </summary>
+        internal static string Program_FatalError {
+            get {
+                return ResourceManager.GetString("Program_FatalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please report the issue to the developer, and attach the snapshot created in {0}.
+        /// </summary>
+        internal static string Program_PleaseSendIssueReport {
+            get {
+                return ResourceManager.GetString("Program_PleaseSendIssueReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Size similar to {Width=54, Height=26}.
         /// </summary>
         internal static System.Drawing.Size quizToolStripMenuItem_Size {

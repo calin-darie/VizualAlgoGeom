@@ -916,4 +916,10 @@
   <data name="MainForm_AutosaveSucceeded" xml:space="preserve">
     <value>Autosave succeeded.</value>
   </data>
+  <data name="Program_FatalError" xml:space="preserve">
+    <value>Fatal error</value>
+  </data>
+  <data name="Program_PleaseSendIssueReport" xml:space="preserve">
+    <value>Please report the issue to the developer, and attach the snapshot created in {0}</value>
+  </data>
 </root>

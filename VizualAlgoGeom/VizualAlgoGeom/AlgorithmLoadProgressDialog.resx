@@ -359,6 +359,6 @@
     <value>Problem occured during algorithm execution</value>
   </data>
   <data name="please contact author" xml:space="preserve">
-    <value>An archive of the current autosave and logs has been created in %appdata%/VizualAlgoGeom/IssueReporting. Please attach this file to an issue. Do you want to do this now?</value>
+    <value>An archive of the current autosave and logs has been created in {0}. Please attach this file to an issue. Do you want to do this now?</value>
   </data>
 </root>
